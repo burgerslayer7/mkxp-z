@@ -1,15 +1,18 @@
-name: RGSS-NX Switch M0
+name: RGSS-NX Switch M1
 
 on:
   workflow_dispatch:
   push:
     branches: ['rgss-nx/**']
     paths:
-      - 'rgss-nx/compat/**'
-      - 'rgss-nx/smoke-test/**'
+      - 'rgss-nx/**'
+      - 'tools/rgss-nx/**'
+      - 'docs/rgss-nx/**'
+      - 'docs/psdk-nx/**'
       - 'libretro/**'
       - 'src/**'
       - 'binding/**'
+      - 'binding-sandbox/**'
       - 'meson.build'
       - 'meson_options.txt'
       - '.github/workflows/rgss-nx-switch.yml'
@@ -53,7 +56,7 @@ jobs:
           path: libretro/build/libretro-stage1
 
   switch:
-    name: RGSS-NX Nintendo Switch NRO
+    name: RGSS-NX Nintendo Switch M1
     needs: stage1
     runs-on: ubuntu-latest
     container:
@@ -66,7 +69,7 @@ jobs:
           curl -L -o ~/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
           bash ~/Miniforge3.sh -b -p ~/miniforge3
           source ~/miniforge3/etc/profile.d/conda.sh
-          conda install -y git meson cmake
+          conda install -y git meson cmake python
           echo "$HOME/miniforge3/bin" >> "$GITHUB_PATH"
 
       - uses: actions/checkout@v5
@@ -76,7 +79,7 @@ jobs:
           name: rgss-nx-stage1
           path: libretro/build/libretro-stage1
 
-      - name: Build mkxp-z libretro core for libnx
+      - name: Build mkxp-z core for libnx
         shell: bash
         run: |
           git config --global --add safe.directory "$(pwd)"
@@ -88,35 +91,137 @@ jobs:
             -Dlibretro_save_states=true
           cd build
           CLICOLOR_FORCE=1 ninja -v
-          mv mkxp-z_libretro.a "$RUNNER_TEMP/libretro_libnx.a"
+          cp mkxp-z_libretro.a "$RUNNER_TEMP/libretro_libnx.a"
 
-      - name: Build dedicated RetroArch/libnx frontend
+      - name: Resolve RetroArch version
+        id: retroarch
         shell: bash
         run: |
           tag_name=$(curl -s https://api.github.com/repos/libretro/RetroArch/releases/latest | grep '"tag_name"' | head -1 | cut -d '"' -f 4)
-          cd "$RUNNER_TEMP"
-          git clone https://github.com/libretro/RetroArch retroarch --depth 1 -b "$tag_name"
-          mv libretro_libnx.a retroarch/
-          cd retroarch
+          test -n "$tag_name"
+          echo "tag=$tag_name" >> "$GITHUB_OUTPUT"
 
-          if [ "$tag_name" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
+      - name: Build isolated generic RGSS-NX frontend
+        shell: bash
+        env:
+          RA_TAG: ${{ steps.retroarch.outputs.tag }}
+        run: |
+          cd "$RUNNER_TEMP"
+          git clone https://github.com/libretro/RetroArch retroarch-generic --depth 1 -b "$RA_TAG"
+          cp libretro_libnx.a retroarch-generic/
+          cd retroarch-generic
+
+          if [ "$RA_TAG" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
             git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
           fi
 
-          CLICOLOR_FORCE=1 make -f Makefile.libnx LIBRETRO=mkxp-z
-          mkdir -p "$GITHUB_WORKSPACE/dist"
-          mv retroarch_switch.nro "$GITHUB_WORKSPACE/dist/RGSS-NX.nro"
+          python - <<'PY'
+          from pathlib import Path
 
-      - name: Package M0 test files
+          platform = Path('frontend/drivers/platform_switch.c')
+          text = platform.read_text()
+          old = '         g_defaults.dirs[DEFAULT_DIR_PORT],\n         FILE_PATH_MAIN_CONFIG,'
+          new = '         "romfs:/retroarch",\n         FILE_PATH_MAIN_CONFIG,'
+          if old not in text:
+              raise SystemExit('RGSS-NX: RetroArch Switch config-path anchor not found')
+          platform.write_text(text.replace(old, new, 1))
+
+          retroarch = Path('retroarch.c')
+          text = retroarch.read_text()
+          old = 'int main(int argc, char *argv[])\n{\n   return rarch_main(argc, argv, NULL);\n}'
+          new = 'int main(int argc, char *argv[])\n{\n   romfsInit();\n   return rarch_main(argc, argv, NULL);\n}'
+          if old not in text:
+              raise SystemExit('RGSS-NX: RetroArch libnx main anchor not found')
+          retroarch.write_text(text.replace(old, new, 1))
+          PY
+
+          CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
+
+          mkdir -p "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX"
+          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX" "RGSS-NX contributors" "0.2.0" "$RUNNER_TEMP/rgss-nx.nacp"
+          /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
+            "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX.nro" \
+            --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
+            --nacp="$RUNNER_TEMP/rgss-nx.nacp"
+
+      - name: Build Infinite Fusion 2 direct launcher
+        shell: bash
+        env:
+          RA_TAG: ${{ steps.retroarch.outputs.tag }}
+        run: |
+          cd "$RUNNER_TEMP"
+          git clone https://github.com/libretro/RetroArch retroarch-if2 --depth 1 -b "$RA_TAG"
+          cp libretro_libnx.a retroarch-if2/
+          cd retroarch-if2
+
+          if [ "$RA_TAG" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
+            git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
+          fi
+
+          python - <<'PY'
+          from pathlib import Path
+
+          platform = Path('frontend/drivers/platform_switch.c')
+          text = platform.read_text()
+          old = '         g_defaults.dirs[DEFAULT_DIR_PORT],\n         FILE_PATH_MAIN_CONFIG,'
+          new = '         "romfs:/retroarch",\n         FILE_PATH_MAIN_CONFIG,'
+          if old not in text:
+              raise SystemExit('RGSS-NX: RetroArch Switch config-path anchor not found')
+          platform.write_text(text.replace(old, new, 1))
+
+          retroarch = Path('retroarch.c')
+          text = retroarch.read_text()
+          old = 'int main(int argc, char *argv[])\n{\n   return rarch_main(argc, argv, NULL);\n}'
+          new = '''int main(int argc, char *argv[])
+          {
+             static char *rgss_nx_argv[] = {NULL, NULL, NULL};
+             romfsInit();
+             rgss_nx_argv[0] = strdup("retroarch");
+             rgss_nx_argv[1] = strdup("sdmc:/switch/RGSS-NX/games/InfiniteFusion2/RGSSNX.mkxp.json");
+             argc = 2;
+             argv = rgss_nx_argv;
+             return rarch_main(argc, argv, NULL);
+          }'''
+          if old not in text:
+              raise SystemExit('RGSS-NX: RetroArch libnx main anchor not found')
+          retroarch.write_text(text.replace(old, new, 1))
+          PY
+
+          CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
+
+          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX IF2" "RGSS-NX contributors" "0.2.0" "$RUNNER_TEMP/rgss-nx-if2.nacp"
+          /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
+            "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX-IF2.nro" \
+            --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
+            --nacp="$RUNNER_TEMP/rgss-nx-if2.nacp"
+
+      - name: Package installer, profiles and diagnostics
         shell: bash
         run: |
-          mkdir -p dist/rgss-nx/smoke-test
-          mkdir -p dist/retroarch/system/mkxp-z/Scripts/Preload
-          cp rgss-nx/smoke-test/mkxp.json rgss-nx/smoke-test/smoke.rb dist/rgss-nx/smoke-test/
-          cp rgss-nx/compat/preload/rgss_nx_bootstrap.rb dist/retroarch/system/mkxp-z/Scripts/Preload/
+          mkdir -p dist/compat/preload dist/compat/postload
+          mkdir -p dist/profiles/generic-rmxp dist/profiles/infinite-fusion-2
+          mkdir -p dist/smoke-test
+
+          cp rgss-nx/compat/preload/rgss_nx_bootstrap.rb dist/compat/preload/
+          cp rgss-nx/compat/postload/rgss_nx_compat.rb dist/compat/postload/
+          cp rgss-nx/profiles/generic-rmxp/RGSSNX.mkxp.json dist/profiles/generic-rmxp/
+          cp rgss-nx/profiles/infinite-fusion-2/RGSSNX.mkxp.json dist/profiles/infinite-fusion-2/
+          cp rgss-nx/smoke-test/mkxp.json rgss-nx/smoke-test/smoke.rb dist/smoke-test/
+          cp tools/rgss-nx/Install-Game.ps1 dist/
+          cp tools/rgss-nx/Inspect-Game.ps1 dist/
+          cp docs/rgss-nx/INFINITE_FUSION_2.md dist/
           cp docs/rgss-nx/TEST_PROTOCOL.md dist/
+
+      - name: Verify M1 package
+        shell: bash
+        run: |
+          test -s dist/sd/switch/RGSS-NX/RGSS-NX.nro
+          test -s dist/sd/switch/RGSS-NX/RGSS-NX-IF2.nro
+          test -s dist/Install-Game.ps1
+          test -s dist/profiles/infinite-fusion-2/RGSSNX.mkxp.json
+          find dist -maxdepth 6 -type f -print
 
       - uses: actions/upload-artifact@v4
         with:
-          name: RGSS-NX-M0-Switch
+          name: RGSS-NX-M1-Switch
           path: dist

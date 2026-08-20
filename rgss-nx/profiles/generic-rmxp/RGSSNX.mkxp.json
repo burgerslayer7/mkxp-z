@@ -1,0 +1,22 @@
+{
+  "rgssVersion": 1,
+  "vsync": true,
+  "frameSkip": false,
+  "pathCache": true,
+  "preloadScript": [
+    "/System/Scripts/Preload/ruby_classic_wrap.rb",
+    "/System/Scripts/Preload/mkxp_wrap.rb",
+    "/System/Scripts/Preload/win32_wrap.rb",
+    "/Game/RGSSNX/compat/rgss_nx_bootstrap.rb"
+  ],
+  "postloadScript": [
+    "/Game/RGSSNX/compat/rgss_nx_compat.rb"
+  ],
+  "bindingNames": {
+    "c": "Confirm",
+    "b": "Cancel",
+    "a": "Action",
+    "l": "L",
+    "r": "R"
+  }
+}

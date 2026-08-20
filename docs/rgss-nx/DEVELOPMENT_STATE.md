@@ -16,42 +16,63 @@ allowed to use.
 RGSS-NX is based on the `libretro` work in `white-axe/mkxp-z`, proposed to
 `mkxp-z/mkxp-z` as PR #255.
 
-Pinned investigation head:
+Pinned base head:
 
 `650cb0888a07d0b5044e131160ddfa53feaf595b`
 
-The upstream implementation already contains:
+The upstream implementation already provides the libnx cross-build, static
+libretro core, RetroArch/libnx frontend, virtual game/save/system filesystems,
+preload/postload scripts, controller mappings and save-state support.
 
-- Nintendo Switch / libnx Meson cross configuration;
-- a Switch libretro static-core build;
-- a RetroArch/libnx frontend build producing an NRO;
-- virtual game/save/system filesystems for libretro;
-- selectable preload/postload Ruby scripts;
-- save-state support.
+## M0
 
-## M0 status
+Complete in source:
 
-Done in this bootstrap:
+- upstream pinned;
+- asset-free RGSS graphics/input smoke test;
+- Switch-only build workflow;
+- basic runtime diagnostics.
 
-- architecture and legal boundaries fixed;
-- upstream commit pinned;
-- asset-free RGSS smoke test created;
-- non-invasive runtime probe preload created;
-- dedicated Switch-only CI workflow drafted;
-- SD preparation helper created.
+Physical hardware validation remains pending.
 
-Not yet validated on physical Switch:
+## M1 - Essentials / Infinite Fusion 2 test candidate
 
-- NRO boots under Horizon;
-- OpenGL/libnx presentation works;
-- audio works;
-- Joy-Con input reaches RGSS `Input`;
-- VFS paths are correct on Horizon;
-- game save persistence survives restart.
+Implemented in source:
 
-## Compatibility policy
+- generic dedicated `RGSS-NX.nro` frontend with isolated RetroArch config;
+- direct `RGSS-NX-IF2.nro` launcher targeting
+  `sdmc:/switch/RGSS-NX/games/InfiniteFusion2/RGSSNX.mkxp.json`;
+- per-game `RGSSNX.mkxp.json` profiles;
+- automatic Ruby compatibility preloads (`ruby_classic_wrap`, `mkxp_wrap`,
+  `win32_wrap`);
+- RGSS-NX postload compatibility layer;
+- safe Horizon handling for browser-launch requests;
+- clean offline fallback when `HTTPLite` is not exposed by the Switch core;
+- dedicated writable save/state/log directories on SD;
+- Windows installer that copies the runtime payload, user-supplied game and
+  compatibility files to the expected SD structure.
 
-Do not patch individual fangames until the smoke test works. Then test a
-minimal Pokémon Essentials project, followed by Infinite Fusion. Any
-workaround should first live in a named preload/postload compatibility layer;
-engine changes are reserved for problems that cannot safely be shimmed in Ruby.
+Infinite Fusion 2 is the first full game target because its public release has
+both `Game.ini` and `mkxp.json`, so RGSS-NX can load the project directly rather
+than emulating its Windows executable.
+
+## Required next evidence
+
+A real Switch test must establish, in order:
+
+1. M1 NRO starts under Horizon.
+2. Generic browser renders and accepts Joy-Con input.
+3. Infinite Fusion 2 reaches title/menu through the direct launcher.
+4. New-game overworld is controllable.
+5. Battle flow works.
+6. Save -> full exit -> reload persists.
+7. Sprite extraction/download paths do not crash the runtime.
+
+Any failing step should be fixed in the Ruby compatibility layer first. Engine
+changes are reserved for faults below the game scripting layer.
+
+## PSDK
+
+PSDK is intentionally split into `PSDK-NX`. PSDK uses LiteRGSS2/SFML rather than
+Enterbrain RGSS, so routing it through mkxp-z would be the wrong architecture.
+See `docs/psdk-nx/PORTING_PLAN.md`.

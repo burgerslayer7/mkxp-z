@@ -2,49 +2,59 @@
 
 ## M0 — Horizon boot / RGSS smoke test
 
-- Produce `RGSS-NX.nro` from mkxp-z libretro + RetroArch/libnx.
-- Launch the original asset-free `rgss-nx/smoke-test/mkxp.json`.
-- Validate graphics, text fallback, input and clean logs.
+Source complete; physical validation pending.
 
-Exit criterion: smoke screen renders and Confirm toggles the panel.
+- Build `RGSS-NX.nro` from mkxp-z libretro + RetroArch/libnx.
+- Run the original asset-free smoke test.
+- Validate graphics and controller input.
 
-## M1 — Filesystem and saves
+## M1 — Playable RMXP / Essentials foundation
 
-- Validate `/Game`, `/Save`, `/System` mappings on Switch.
-- Save and reload a small RGSS data file.
-- Validate case-insensitive asset lookup and paths containing spaces/non-ASCII.
+Source complete; physical validation pending.
 
-## M2 — Audio and controller mapping
+- Isolated RGSS-NX frontend and SD directories.
+- Generic RMXP profile.
+- Ruby compatibility wrappers.
+- Writable save/state/log paths.
+- User-game installer.
+- Infinite Fusion 2 direct launcher/profile.
+- Clean offline fallback if the Switch core lacks HTTP.
 
-- BGM/BGS/ME/SE test matrix.
-- Joy-Con / Pro Controller mapping for RGSS A/B/C/X/Y/Z/L/R.
-- Handheld and docked modes.
+Exit criterion: Infinite Fusion 2 reaches overworld, battle and persistent
+save/load on a real Switch.
 
-## M3 — Pokémon Essentials baseline
+## M2 — Hardware fixes / complete IF2 compatibility
 
-- Use a redistributable/minimal test project only.
-- Record unsupported Win32API calls, filesystem assumptions and Ruby failures.
-- Add compatibility shims only from observed failures.
+Driven only by real M1 logs/errors:
 
-## M4 — Infinite Fusion boot
+- graphics/OpenGL issues;
+- audio/BGM/SE issues;
+- VFS/path edge cases;
+- HTTP/sprite-download behavior;
+- long sessions, suspend/resume and memory pressure;
+- any missing key/controller semantics.
 
-- User supplies an unmodified legal copy of the game.
-- Load its existing `mkxp.json` first.
-- Target: title screen -> new/load game -> map -> battle -> save/reload.
+## M3 — Wider Pokémon Essentials matrix
 
-## M5 — Infinite Fusion compatibility
+- Test representative Essentials generations/versions using user-supplied games.
+- Keep compatibility fixes generic whenever possible.
+- Add named per-game profiles only for genuine game-specific behavior.
 
-- Fix only reproducible Switch/libretro incompatibilities.
-- Validate sprite loading/cache, fusion UI, downloads/network-dependent paths,
-  saves, long sessions and sleep/resume.
+## M4 — Generic RPG Maker XP/VX/VX Ace UX
 
-## M6 — Other Essentials fangames
+- Game discovery from `/switch/RGSS-NX/games`.
+- Metadata and friendly launch entries.
+- Per-game config/save isolation.
+- Better diagnostics and recovery UI.
 
-- Compatibility profiles for other fangames only when legally testable by the user.
-- No game assets in RGSS-NX.
+## M5 — SwitchU / Tico integration
 
-## M7 — Standalone user experience
+- Stable direct-launch convention.
+- One frontend entry per fangame where supported.
+- Keep the generic RGSS-NX browser as fallback.
 
-- Reduce visible RetroArch plumbing.
-- Game discovery and per-game launch metadata.
-- Stable paths suitable for SwitchU/Tico integration.
+## Parallel track — PSDK-NX
+
+PSDK is not RGSS. Port LiteRGSS2/Ruby/SFML functionality separately while
+reusing RGSS-NX's proven libnx packaging, SD layout and launcher conventions.
+See `docs/psdk-nx/PORTING_PLAN.md`.
