@@ -17,6 +17,9 @@ on:
       - 'meson_options.txt'
       - '.github/workflows/rgss-nx-switch.yml'
 
+permissions:
+  contents: write
+
 jobs:
   stage1:
     name: RGSS-NX stage 1
@@ -44,11 +47,24 @@ jobs:
           tar -xzf "$RUNNER_TEMP/binaryen.tar.gz" -C "$RUNNER_TEMP/binaryen" --strip-components=1
 
       - name: Build stage 1
+        shell: bash
         run: |
-          cd libretro
-          CLICOLOR_FORCE=1 make -j "$(nproc)" \
-            WASI_SDK="$RUNNER_TEMP/wasi-sdk" \
-            WASM_OPT="$RUNNER_TEMP/binaryen/bin/wasm-opt"
+          set -o pipefail
+          mkdir -p "$GITHUB_WORKSPACE/ci-logs"
+          {
+            cd libretro
+            CLICOLOR_FORCE=1 make -j "$(nproc)" \
+              WASI_SDK="$RUNNER_TEMP/wasi-sdk" \
+              WASM_OPT="$RUNNER_TEMP/binaryen/bin/wasm-opt"
+          } 2>&1 | tee "$GITHUB_WORKSPACE/ci-logs/stage1.log"
+
+      - name: Upload stage 1 log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rgss-nx-stage1-logs
+          path: ci-logs
+          if-no-files-found: ignore
 
       - uses: actions/upload-artifact@v4
         with:
@@ -63,14 +79,21 @@ jobs:
       image: reallibretroretroarch/libretro-build-libnx-devkitpro:v4-10-0
       options: -u root
     steps:
+      - name: Prepare log directory
+        shell: bash
+        run: mkdir -p "$GITHUB_WORKSPACE/ci-logs"
+
       - name: Install host tools
         shell: bash
         run: |
-          curl -L -o ~/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-          bash ~/Miniforge3.sh -b -p ~/miniforge3
-          source ~/miniforge3/etc/profile.d/conda.sh
-          conda install -y git meson cmake python
-          echo "$HOME/miniforge3/bin" >> "$GITHUB_PATH"
+          set -o pipefail
+          {
+            curl -L -o ~/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+            bash ~/Miniforge3.sh -b -p ~/miniforge3
+            source ~/miniforge3/etc/profile.d/conda.sh
+            conda install -y git meson cmake python
+            echo "$HOME/miniforge3/bin" >> "$GITHUB_PATH"
+          } 2>&1 | tee -a "$GITHUB_WORKSPACE/ci-logs/switch.log"
 
       - uses: actions/checkout@v5
 
@@ -83,16 +106,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git config --global --add safe.directory "$(pwd)"
-          CLICOLOR_FORCE=1 meson setup build \
-            --cross-file libretro/meson-switch.txt \
-            --buildtype release \
-            -Db_lto=true \
-            -Dlibretro=true \
-            -Dlibretro_save_states=true
-          cd build
-          CLICOLOR_FORCE=1 ninja -v
-          cp mkxp-z_libretro.a "$RUNNER_TEMP/libretro_libnx.a"
+          {
+            git config --global --add safe.directory "$(pwd)"
+            CLICOLOR_FORCE=1 meson setup build \
+              --cross-file libretro/meson-switch.txt \
+              --buildtype release \
+              -Db_lto=true \
+              -Dlibretro=true \
+              -Dlibretro_save_states=true
+            cd build
+            CLICOLOR_FORCE=1 ninja -v
+            cp mkxp-z_libretro.a "$RUNNER_TEMP/libretro_libnx.a"
+          } 2>&1 | tee -a "$GITHUB_WORKSPACE/ci-logs/switch.log"
 
       - name: Resolve RetroArch version
         id: retroarch
@@ -102,6 +127,7 @@ jobs:
           tag_name=$(curl -fsSL https://api.github.com/repos/libretro/RetroArch/releases/latest | python -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
           test -n "$tag_name"
           echo "tag=$tag_name" >> "$GITHUB_OUTPUT"
+          echo "RetroArch=$tag_name" | tee -a "$GITHUB_WORKSPACE/ci-logs/switch.log"
 
       - name: Build isolated generic RGSS-NX frontend
         shell: bash
@@ -109,16 +135,17 @@ jobs:
           RA_TAG: ${{ steps.retroarch.outputs.tag }}
         run: |
           set -euo pipefail
-          cd "$RUNNER_TEMP"
-          git clone https://github.com/libretro/RetroArch retroarch-generic --depth 1 -b "$RA_TAG"
-          cp libretro_libnx.a retroarch-generic/
-          cd retroarch-generic
+          {
+            cd "$RUNNER_TEMP"
+            git clone https://github.com/libretro/RetroArch retroarch-generic --depth 1 -b "$RA_TAG"
+            cp libretro_libnx.a retroarch-generic/
+            cd retroarch-generic
 
-          if [ "$RA_TAG" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
-            git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
-          fi
+            if [ "$RA_TAG" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
+              git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
+            fi
 
-          python - <<'PY'
+            python - <<'PY'
           from pathlib import Path
 
           platform = Path('frontend/drivers/platform_switch.c')
@@ -138,14 +165,15 @@ jobs:
           retroarch.write_text(text.replace(old, new, 1))
           PY
 
-          CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
+            CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
 
-          mkdir -p "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX"
-          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX" "RGSS-NX contributors" "0.2.1" "$RUNNER_TEMP/rgss-nx.nacp"
-          /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
-            "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX.nro" \
-            --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
-            --nacp="$RUNNER_TEMP/rgss-nx.nacp"
+            mkdir -p "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX"
+            /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX" "RGSS-NX contributors" "0.2.2" "$RUNNER_TEMP/rgss-nx.nacp"
+            /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
+              "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX.nro" \
+              --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
+              --nacp="$RUNNER_TEMP/rgss-nx.nacp"
+          } 2>&1 | tee -a "$GITHUB_WORKSPACE/ci-logs/switch.log"
 
       - name: Build Infinite Fusion 2 direct launcher
         shell: bash
@@ -153,16 +181,17 @@ jobs:
           RA_TAG: ${{ steps.retroarch.outputs.tag }}
         run: |
           set -euo pipefail
-          cd "$RUNNER_TEMP"
-          git clone https://github.com/libretro/RetroArch retroarch-if2 --depth 1 -b "$RA_TAG"
-          cp libretro_libnx.a retroarch-if2/
-          cd retroarch-if2
+          {
+            cd "$RUNNER_TEMP"
+            git clone https://github.com/libretro/RetroArch retroarch-if2 --depth 1 -b "$RA_TAG"
+            cp libretro_libnx.a retroarch-if2/
+            cd retroarch-if2
 
-          if [ "$RA_TAG" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
-            git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
-          fi
+            if [ "$RA_TAG" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
+              git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
+            fi
 
-          python - <<'PY'
+            python - <<'PY'
           from pathlib import Path
 
           platform = Path('frontend/drivers/platform_switch.c')
@@ -191,13 +220,14 @@ jobs:
           retroarch.write_text(text.replace(old, new, 1))
           PY
 
-          CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
+            CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
 
-          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX IF2" "RGSS-NX contributors" "0.2.1" "$RUNNER_TEMP/rgss-nx-if2.nacp"
-          /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
-            "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX-IF2.nro" \
-            --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
-            --nacp="$RUNNER_TEMP/rgss-nx-if2.nacp"
+            /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX IF2" "RGSS-NX contributors" "0.2.2" "$RUNNER_TEMP/rgss-nx-if2.nacp"
+            /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
+              "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX-IF2.nro" \
+              --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
+              --nacp="$RUNNER_TEMP/rgss-nx-if2.nacp"
+          } 2>&1 | tee -a "$GITHUB_WORKSPACE/ci-logs/switch.log"
 
       - name: Package runtime, installer and diagnostics
         shell: bash
@@ -226,7 +256,94 @@ jobs:
           grep -q 'InfiniteFusion2/Game.ini' .github/workflows/rgss-nx-switch.yml
           find dist -maxdepth 9 -type f -print
 
+      - name: Upload Switch log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rgss-nx-switch-logs
+          path: ci-logs
+          if-no-files-found: ignore
+
       - uses: actions/upload-artifact@v4
         with:
           name: RGSS-NX-M1-Switch
           path: dist
+
+  publish:
+    name: Publish NROs to branch
+    if: always()
+    needs: [stage1, switch]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Download successful package
+        if: needs.switch.result == 'success'
+        uses: actions/download-artifact@v5
+        with:
+          name: RGSS-NX-M1-Switch
+          path: .ci-package
+
+      - name: Download CI logs
+        if: always()
+        continue-on-error: true
+        uses: actions/download-artifact@v5
+        with:
+          pattern: rgss-nx-*-logs
+          path: .ci-logs
+          merge-multiple: true
+
+      - name: Prepare published output
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --ff-only origin "$GITHUB_REF_NAME"
+          rm -rf artifacts/ci-logs
+          mkdir -p artifacts/ci-logs
+
+          if [ -d .ci-logs ]; then
+            cp -R .ci-logs/. artifacts/ci-logs/ || true
+          fi
+
+          if [ "${{ needs.switch.result }}" = "success" ]; then
+            test -s .ci-package/sd/switch/RGSS-NX/RGSS-NX.nro
+            test -s .ci-package/sd/switch/RGSS-NX/RGSS-NX-IF2.nro
+            cp .ci-package/sd/switch/RGSS-NX/RGSS-NX.nro artifacts/RGSS-NX.nro
+            cp .ci-package/sd/switch/RGSS-NX/RGSS-NX-IF2.nro artifacts/RGSS-NX-IF2.nro
+          else
+            rm -f artifacts/RGSS-NX.nro artifacts/RGSS-NX-IF2.nro
+          fi
+
+          {
+            echo '# RGSS-NX CI build status'
+            echo
+            echo "Source commit: $GITHUB_SHA"
+            echo "Stage 1: ${{ needs.stage1.result }}"
+            echo "Switch: ${{ needs.switch.result }}"
+            echo "Published: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          } > artifacts/BUILD_STATUS.md
+
+      - name: Commit published output
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git add -- artifacts/BUILD_STATUS.md
+          if [ -f artifacts/RGSS-NX.nro ]; then git add -- artifacts/RGSS-NX.nro; fi
+          if [ -f artifacts/RGSS-NX-IF2.nro ]; then git add -- artifacts/RGSS-NX-IF2.nro; fi
+          if [ -d artifacts/ci-logs ]; then git add -- artifacts/ci-logs; fi
+
+          if git diff --cached --quiet; then
+            echo 'No published output changes.'
+            exit 0
+          fi
+
+          git commit -m 'ci: publish RGSS-NX Switch build [skip ci]'
+          git push origin HEAD:"$GITHUB_REF_NAME"
