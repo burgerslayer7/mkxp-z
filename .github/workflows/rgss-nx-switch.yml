@@ -1,0 +1,122 @@
+name: RGSS-NX Switch M0
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['rgss-nx/**']
+    paths:
+      - 'rgss-nx/compat/**'
+      - 'rgss-nx/smoke-test/**'
+      - 'libretro/**'
+      - 'src/**'
+      - 'binding/**'
+      - 'meson.build'
+      - 'meson_options.txt'
+      - '.github/workflows/rgss-nx-switch.yml'
+
+jobs:
+  stage1:
+    name: RGSS-NX stage 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y git curl build-essential automake libtool zip universal-ctags ruby
+
+      - name: WASI SDK 30
+        run: |
+          curl -L -o "$RUNNER_TEMP/wasi-sdk.tar.gz" \
+            https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-30/wasi-sdk-30.0-x86_64-linux.tar.gz
+          mkdir "$RUNNER_TEMP/wasi-sdk"
+          tar -xzf "$RUNNER_TEMP/wasi-sdk.tar.gz" -C "$RUNNER_TEMP/wasi-sdk" --strip-components=1
+
+      - name: Binaryen 126
+        run: |
+          curl -L -o "$RUNNER_TEMP/binaryen.tar.gz" \
+            https://github.com/WebAssembly/binaryen/releases/download/version_126/binaryen-version_126-x86_64-linux.tar.gz
+          mkdir "$RUNNER_TEMP/binaryen"
+          tar -xzf "$RUNNER_TEMP/binaryen.tar.gz" -C "$RUNNER_TEMP/binaryen" --strip-components=1
+
+      - name: Build stage 1
+        run: |
+          cd libretro
+          CLICOLOR_FORCE=1 make -j "$(nproc)" \
+            WASI_SDK="$RUNNER_TEMP/wasi-sdk" \
+            WASM_OPT="$RUNNER_TEMP/binaryen/bin/wasm-opt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rgss-nx-stage1
+          path: libretro/build/libretro-stage1
+
+  switch:
+    name: RGSS-NX Nintendo Switch NRO
+    needs: stage1
+    runs-on: ubuntu-latest
+    container:
+      image: reallibretroretroarch/libretro-build-libnx-devkitpro:v4-10-0
+      options: -u root
+    steps:
+      - name: Install host tools
+        shell: bash
+        run: |
+          curl -L -o ~/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+          bash ~/Miniforge3.sh -b -p ~/miniforge3
+          source ~/miniforge3/etc/profile.d/conda.sh
+          conda install -y git meson cmake
+          echo "$HOME/miniforge3/bin" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: rgss-nx-stage1
+          path: libretro/build/libretro-stage1
+
+      - name: Build mkxp-z libretro core for libnx
+        shell: bash
+        run: |
+          git config --global --add safe.directory "$(pwd)"
+          CLICOLOR_FORCE=1 meson setup build \
+            --cross-file libretro/meson-switch.txt \
+            --buildtype release \
+            -Db_lto=true \
+            -Dlibretro=true \
+            -Dlibretro_save_states=true
+          cd build
+          CLICOLOR_FORCE=1 ninja -v
+          mv mkxp-z_libretro.a "$RUNNER_TEMP/libretro_libnx.a"
+
+      - name: Build dedicated RetroArch/libnx frontend
+        shell: bash
+        run: |
+          tag_name=$(curl -s https://api.github.com/repos/libretro/RetroArch/releases/latest | grep '"tag_name"' | head -1 | cut -d '"' -f 4)
+          cd "$RUNNER_TEMP"
+          git clone https://github.com/libretro/RetroArch retroarch --depth 1 -b "$tag_name"
+          mv libretro_libnx.a retroarch/
+          cd retroarch
+
+          if [ "$tag_name" = 'v1.22.2' ] && [ -f "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch" ]; then
+            git apply "$GITHUB_WORKSPACE/libretro/retroarch-pr18459.patch"
+          fi
+
+          CLICOLOR_FORCE=1 make -f Makefile.libnx LIBRETRO=mkxp-z
+          mkdir -p "$GITHUB_WORKSPACE/dist"
+          mv retroarch_switch.nro "$GITHUB_WORKSPACE/dist/RGSS-NX.nro"
+
+      - name: Package M0 test files
+        shell: bash
+        run: |
+          mkdir -p dist/rgss-nx/smoke-test
+          mkdir -p dist/retroarch/system/mkxp-z/Scripts/Preload
+          cp rgss-nx/smoke-test/mkxp.json rgss-nx/smoke-test/smoke.rb dist/rgss-nx/smoke-test/
+          cp rgss-nx/compat/preload/rgss_nx_bootstrap.rb dist/retroarch/system/mkxp-z/Scripts/Preload/
+          cp docs/rgss-nx/TEST_PROTOCOL.md dist/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RGSS-NX-M0-Switch
+          path: dist

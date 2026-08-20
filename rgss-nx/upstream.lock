@@ -1,0 +1,4 @@
+UPSTREAM_REPO=white-axe/mkxp-z
+UPSTREAM_BRANCH=libretro
+UPSTREAM_COMMIT=650cb0888a07d0b5044e131160ddfa53feaf595b
+UPSTREAM_PR=https://github.com/mkxp-z/mkxp-z/pull/255

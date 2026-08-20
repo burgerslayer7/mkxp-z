@@ -1,0 +1,8 @@
+{
+  "rgssVersion": 1,
+  "customScript": "smoke.rb",
+  "vsync": true,
+  "fixedAspectRatio": true,
+  "smoothScaling": 0,
+  "frameSkip": false
+}

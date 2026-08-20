@@ -1,0 +1,20 @@
+# Build output
+build/
+dist/
+*.nro
+*.elf
+*.a
+
+# User-owned games / assets must never be committed
+games/
+Game.ini
+Data/
+Graphics/
+Audio/
+*.rgssad
+*.rgss2a
+*.rgss3a
+
+# Local logs
+logs/
+*.log
