@@ -1,60 +1,53 @@
 # RGSS-NX roadmap
 
-## M0 — Horizon boot / RGSS smoke test
+## M0 — Horizon / RGSS proof
 
-Source complete; physical validation pending.
+Source complete; hardware validation pending.
 
-- Build `RGSS-NX.nro` from mkxp-z libretro + RetroArch/libnx.
-- Run the original asset-free smoke test.
-- Validate graphics and controller input.
+Exit criterion: original smoke screen renders and controller Confirm works.
 
-## M1 — Playable RMXP / Essentials foundation
+## M1 — playable RPG Maker / Essentials foundation
 
-Source complete; physical validation pending.
+Source complete; hardware validation pending.
 
-- Isolated RGSS-NX frontend and SD directories.
-- Generic RMXP profile.
-- Ruby compatibility wrappers.
-- Writable save/state/log paths.
-- User-game installer.
-- Infinite Fusion 2 direct launcher/profile.
-- Clean offline fallback if the Switch core lacks HTTP.
+- isolated generic frontend;
+- deterministic mkxp-z core options;
+- compatibility preload from `/System`;
+- writable save/state/log directories;
+- user-game installer;
+- direct Infinite Fusion 2 launcher using original `Game.ini`;
+- clean offline fallback when the core has no HTTP backend.
 
 Exit criterion: Infinite Fusion 2 reaches overworld, battle and persistent
 save/load on a real Switch.
 
-## M2 — Hardware fixes / complete IF2 compatibility
-
-Driven only by real M1 logs/errors:
+## M2 — hardware-driven fixes
 
 - graphics/OpenGL issues;
 - audio/BGM/SE issues;
 - VFS/path edge cases;
 - HTTP/sprite-download behavior;
-- long sessions, suspend/resume and memory pressure;
-- any missing key/controller semantics.
+- long sessions and suspend/resume;
+- memory pressure and controller edge cases.
 
-## M3 — Wider Pokémon Essentials matrix
+## M3 — wider Pokémon Essentials matrix
 
-- Test representative Essentials generations/versions using user-supplied games.
-- Keep compatibility fixes generic whenever possible.
-- Add named per-game profiles only for genuine game-specific behavior.
+Test representative Essentials generations with user-supplied games. Keep
+fixes generic; add named game shims only when genuinely necessary.
 
-## M4 — Generic RPG Maker XP/VX/VX Ace UX
+## M4 — generic RPG Maker UX
 
-- Game discovery from `/switch/RGSS-NX/games`.
-- Metadata and friendly launch entries.
-- Per-game config/save isolation.
-- Better diagnostics and recovery UI.
+- game discovery under `/switch/RGSS-NX/games`;
+- friendly metadata/direct launch entries;
+- per-game configuration/save isolation;
+- better hardware diagnostics.
 
 ## M5 — SwitchU / Tico integration
 
-- Stable direct-launch convention.
-- One frontend entry per fangame where supported.
-- Keep the generic RGSS-NX browser as fallback.
+Stable launch convention and one entry per fangame where supported, with the
+generic RGSS-NX browser retained as fallback.
 
 ## Parallel track — PSDK-NX
 
-PSDK is not RGSS. Port LiteRGSS2/Ruby/SFML functionality separately while
-reusing RGSS-NX's proven libnx packaging, SD layout and launcher conventions.
-See `docs/psdk-nx/PORTING_PLAN.md`.
+Port LiteRGSS2/Ruby runtime pieces to libnx separately while reusing RGSS-NX's
+packaging, SD layout, logging and launcher conventions.

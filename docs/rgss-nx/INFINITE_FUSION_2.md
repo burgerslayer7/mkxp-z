@@ -2,9 +2,12 @@
 
 Status: M1 hardware-test candidate.
 
-RGSS-NX does not execute `InfiniteFusion2.exe` or the RGSS DLLs. It loads the
-RPG Maker project directly through mkxp-z using `Game.ini` and
-`RGSSNX.mkxp.json`.
+RGSS-NX does **not** execute `InfiniteFusion2.exe` or the Windows RGSS DLL. The
+mkxp-z core loads the RPG Maker project directly from its original `Game.ini`
+and then reads the game's own `mkxp.json` when present.
+
+RGSS-NX never rewrites the copied fangame configuration. Compatibility is
+provided from the runtime's system directory.
 
 ## Expected SD layout
 
@@ -15,27 +18,28 @@ RPG Maker project directly through mkxp-z using `Game.ini` and
   games/
     InfiniteFusion2/
       Game.ini
+      mkxp.json
       Data/
       Graphics/
       Audio/
       Fonts/
-      RGSSNX.mkxp.json
-      RGSSNX/
-        compat/
+      ...other original game files...
+  system/
+    mkxp-z/
+      Scripts/
+        Preload/
           rgss_nx_bootstrap.rb
-          rgss_nx_compat.rb
   saves/
   states/
   screenshots/
   logs/
-  system/
 ```
 
-The user supplies the game files. No Pokémon game assets are part of RGSS-NX.
+The user supplies the game. RGSS-NX contains no Pokémon/fangame assets.
 
 ## Windows installer
 
-From an extracted `RGSS-NX-M1-Switch` artifact:
+Extract the `RGSS-NX-M1-Switch` GitHub Actions artifact, then run:
 
 ```powershell
 .\Install-Game.ps1 -GamePath "C:\Games\Infinite Fusion 2" -SdRoot "E:\" -Profile infinite-fusion-2
@@ -43,42 +47,48 @@ From an extracted `RGSS-NX-M1-Switch` artifact:
 
 Replace `E:\` with the mounted SD card drive.
 
-The installer copies the M1 NRO payload when present, copies the user-owned game
-folder, and injects only RGSS-NX's compatibility scripts/configuration.
+The installer copies the NRO/runtime payload, copies the user-supplied game to
+`/switch/RGSS-NX/games/InfiniteFusion2/`, and leaves its `Game.ini` and
+`mkxp.json` untouched.
 
 ## Launch
 
-Use `RGSS-NX-IF2.nro` for the direct path. It requests:
+`RGSS-NX-IF2.nro` directly loads:
 
 ```text
-sdmc:/switch/RGSS-NX/games/InfiniteFusion2/RGSSNX.mkxp.json
+sdmc:/switch/RGSS-NX/games/InfiniteFusion2/Game.ini
 ```
 
-Use `RGSS-NX.nro` for the generic browser and manually select a game's
-`RGSSNX.mkxp.json`, `mkxp.json` or `Game.ini`.
+`RGSS-NX.nro` is the generic browser. It can load `Game.ini`, `mkxp.json`,
+`.rxproj`, `.rvproj`, `.rvproj2`, `.mkxpz`, `.zip` and `.7z` content supported
+by the mkxp-z libretro core.
 
 ## Compatibility behavior
 
-- RGSS1 / RPG Maker XP is forced for this profile.
-- mkxp-z's Ruby-classic, mkxp and Win32 compatibility preload scripts are
-  enabled before the game scripts.
-- RGSS-NX's postload layer runs after the game scripts and before `rgss_main`.
-- If `HTTPLite` exists, the game's own network/download behavior is preserved.
-- If `HTTPLite` is unavailable in the Switch core, downloads are disabled
-  cleanly. Local gameplay and bundled sprites remain the first target.
-- Attempts to launch an external web browser are ignored on Horizon instead of
-  spawning an unavailable desktop command.
-- Saves are routed to `/switch/RGSS-NX/saves` by the dedicated frontend.
+The dedicated frontend enables mkxp-z's `ruby_classic_wrap.rb`,
+`mkxp_wrap.rb`, the upstream Win32 compatibility wrapper, and RGSS-NX's own
+preload. RGSS-NX's preload is installed under the libretro system directory,
+not inside the game.
+
+For Infinite Fusion 2 specifically:
+
+- if `HTTPLite` is available, the game's own download setting and HTTP methods
+  remain in control;
+- if it is unavailable, sprite/data downloads are cleanly disabled rather than
+  crashing the game;
+- attempts to spawn a desktop web browser are ignored on Horizon;
+- save writes are routed through mkxp-z's `/Save` VFS into the dedicated SD
+  save directory.
 
 ## First hardware acceptance test
 
-1. The NRO reaches the game without returning immediately to hbmenu.
-2. Title/menu graphics render.
+1. `RGSS-NX-IF2.nro` starts without returning immediately to hbmenu.
+2. Infinite Fusion 2 reaches its title/menu.
 3. D-pad and A/B work.
-4. Start a new game and reach controllable overworld gameplay.
-5. Save, exit the NRO completely, reopen it, and load the save.
-6. Enter a battle and return to the overworld.
-7. Trigger at least one fusion/sprite display path.
+4. A new game reaches controllable overworld gameplay.
+5. A battle starts and returns to the map.
+6. Save, completely exit, reopen, and load the save.
+7. Display at least one fusion/custom sprite path.
 
-If any step fails, preserve the exact on-screen error and the newest file from
-`/switch/RGSS-NX/logs` when available.
+If a step fails, preserve the exact on-screen error and the newest file from
+`/switch/RGSS-NX/logs` when one is created.

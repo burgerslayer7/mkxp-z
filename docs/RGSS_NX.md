@@ -1,34 +1,29 @@
-# RGSS-NX bootstrap
+# RGSS-NX
 
-Experimental Horizon/Atmosphère runtime work for RPG Maker XP / RGSS games,
-based on the Nintendo Switch libretro work in mkxp-z PR #255.
+Experimental Horizon/Atmosphère runtime for RPG Maker XP/VX/VX Ace games,
+focused first on Pokémon Essentials and Infinite Fusion 2.
 
-## Current target
+RGSS-NX is built on the Nintendo Switch libretro work in mkxp-z PR #255. It
+keeps the upstream engine close to its original design and adds Switch-specific
+packaging, compatibility and launch behavior around it.
 
-M0 is deliberately independent from Pokémon Infinite Fusion. The first proof
-is an original, asset-free RGSS script that must render and receive controller
-input on a real Switch. Only after that passes do we introduce Pokémon
-Essentials and then a user-supplied Infinite Fusion installation.
+## Runtime layout
 
-## Upstream baseline
+- `RGSS-NX.nro` — generic RPG Maker browser/frontend.
+- `RGSS-NX-IF2.nro` — direct Infinite Fusion 2 launcher.
+- `/switch/RGSS-NX/games/` — user-installed games.
+- `/switch/RGSS-NX/system/` — runtime compatibility scripts/RTP/fonts.
+- `/switch/RGSS-NX/saves/` — writable game saves.
 
-See `rgss-nx/upstream.lock`. The investigated branch already contains a libnx Meson
-cross file and CI logic that builds an mkxp-z static libretro core, links it
-into a RetroArch/libnx frontend and outputs an NRO.
+Compatibility scripts are installed in the runtime system directory. RGSS-NX
+does not rewrite a fangame's `Game.ini` or `mkxp.json`.
 
-## Files in this bootstrap
+## PSDK
 
-- `.github/workflows/rgss-nx-switch.yml` — focused M0 Switch build.
-- `rgss-nx/smoke-test/` — original RGSS graphics/input test, no proprietary assets.
-- `rgss-nx/compat/preload/rgss_nx_bootstrap.rb` — non-invasive runtime probe.
-- `tools/rgss-nx/Prepare-SD.ps1` — prepares the expected M0 SD layout.
-- `tools/rgss-nx/Inspect-Game.ps1` — read-only preflight inspection of a fangame folder.
-- `docs/rgss-nx/` — state, roadmap and physical Switch test protocol.
+PSDK is intentionally handled as a separate `PSDK-NX` port because LiteRGSS2
+is not an Enterbrain RGSS runtime. See `docs/psdk-nx/PORTING_PLAN.md`.
 
-## Repository strategy
+## Asset policy
 
-RGSS-NX stays close to the `white-axe/mkxp-z` `libretro` branch initially so
-engine/libnx issues can be fixed with small, reviewable changes instead of
-maintaining a second engine copy.
-
-No game data should ever be committed to the fork.
+No Pokémon, Nintendo, RPG Maker RTP, commercial fonts or third-party fangame
+assets are distributed by this repository. Users supply their own game files.

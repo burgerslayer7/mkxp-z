@@ -1,0 +1,5 @@
+# RGSS-NX compatibility options.
+# Core option names encode script filenames as lowercase hexadecimal bytes.
+mkxp-z_preload-726773735f6e785f626f6f7473747261702e7262 = "enabled"
+mkxp-z_preload-727562795f636c61737369635f777261702e7262 = "enabled"
+mkxp-z_preload-6d6b78705f777261702e7262 = "enabled"

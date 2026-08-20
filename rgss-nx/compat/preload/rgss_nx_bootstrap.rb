@@ -1,8 +1,8 @@
-# RGSS-NX bootstrap
-# Loaded before the RPG Maker game scripts.
+# RGSS-NX compatibility bootstrap.
+# Loaded before the RPG Maker game scripts by the dedicated Switch frontend.
 
 module RGSSNX
-  VERSION = "0.2.0-m1"
+  VERSION = "0.2.1-m1"
 
   def self.safe_value
     yield
@@ -35,7 +35,52 @@ module RGSSNX
   rescue Exception
     false
   end
+
+  # Top-level methods in RPG Maker scripts are private Object instance methods.
+  # Prepending this module before the game scripts keeps these Horizon-specific
+  # behaviors ahead of methods the game defines later, while `super` still lets
+  # the original game implementation run when the capability exists.
+  module ObjectCompat
+    def openUrlInBrowser(url = "")
+      RGSSNX.log("browser request ignored on Horizon: #{url}")
+      false
+    end
+
+    def downloadAllowed?(*args, &block)
+      return false unless RGSSNX.http_available?
+      super
+    rescue NoMethodError
+      false
+    rescue Exception => e
+      RGSSNX.log("downloadAllowed? fallback: #{e.class}: #{e.message}")
+      false
+    end
+
+    def pbPostData(*args, &block)
+      return "" unless RGSSNX.http_available?
+      super
+    rescue NoMethodError
+      ""
+    rescue Exception => e
+      RGSSNX.log("pbPostData fallback: #{e.class}: #{e.message}")
+      ""
+    end
+
+    def pbDownloadData(*args, &block)
+      return nil unless RGSSNX.http_available?
+      super
+    rescue NoMethodError
+      nil
+    rescue Exception => e
+      RGSSNX.log("pbDownloadData fallback: #{e.class}: #{e.message}")
+      nil
+    end
+
+    private :openUrlInBrowser, :downloadAllowed?, :pbPostData, :pbDownloadData
+  end
 end
+
+Object.prepend(RGSSNX::ObjectCompat) unless Object.ancestors.include?(RGSSNX::ObjectCompat)
 
 begin
   ENV["RGSS_NX"] = "1"

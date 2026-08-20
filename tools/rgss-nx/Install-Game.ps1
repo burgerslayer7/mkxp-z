@@ -19,12 +19,22 @@ function Resolve-PackageFile {
             return (Resolve-Path -LiteralPath $candidate).Path
         }
     }
-    throw "RGSS-NX package file not found. Checked: $($Candidates -join ', ')"
+    return $null
 }
 
 function Copy-DirectoryContents {
     param([string]$Source, [string]$Destination)
+
     New-Item -ItemType Directory -Force -Path $Destination | Out-Null
+
+    $resolvedSource = (Resolve-Path -LiteralPath $Source).Path.TrimEnd('\')
+    $resolvedDestination = $null
+    if (Test-Path -LiteralPath $Destination) {
+        $resolvedDestination = (Resolve-Path -LiteralPath $Destination).Path.TrimEnd('\')
+    }
+    if ($resolvedDestination -and $resolvedSource -ieq $resolvedDestination) {
+        return
+    }
 
     $robocopy = Get-Command robocopy.exe -ErrorAction SilentlyContinue
     if ($robocopy) {
@@ -35,19 +45,20 @@ function Copy-DirectoryContents {
         return
     }
 
-    Copy-Item -LiteralPath (Join-Path $Source '*') -Destination $Destination -Recurse -Force
+    Get-ChildItem -LiteralPath $Source -Force | Copy-Item -Destination $Destination -Recurse -Force
 }
 
 $source = (Resolve-Path -LiteralPath $GamePath).Path
 $sd = (Resolve-Path -LiteralPath $SdRoot).Path
+$gameIni = Join-Path $source 'Game.ini'
 
-if (-not (Test-Path -LiteralPath (Join-Path $source 'Game.ini'))) {
-    throw "Game.ini was not found. RGSS-NX currently targets RPG Maker XP/VX/VX Ace games, including Pokémon Essentials. PSDK uses a different runtime and is not handled by this installer yet."
+if (-not (Test-Path -LiteralPath $gameIni)) {
+    throw "Game.ini was not found. RGSS-NX targets RPG Maker XP/VX/VX Ace games (including Pokémon Essentials). PSDK uses the separate PSDK-NX runtime."
 }
 
 if ($Profile -eq 'auto') {
-    $gameIni = Get-Content -LiteralPath (Join-Path $source 'Game.ini') -Raw
-    if ($gameIni -match '(?i)infinite\s*fusion|infinitefusion') {
+    $gameIniText = Get-Content -LiteralPath $gameIni -Raw
+    if ($gameIniText -match '(?i)infinite\s*fusion|infinitefusion') {
         $Profile = 'infinite-fusion-2'
     } else {
         $Profile = 'generic-rmxp'
@@ -59,52 +70,63 @@ foreach ($dir in @('games', 'saves', 'states', 'screenshots', 'recordings', 'log
     New-Item -ItemType Directory -Force -Path (Join-Path $runtimeRoot $dir) | Out-Null
 }
 
-# If this script came from the GitHub Actions artifact, install the NRO payload too.
+# GitHub Actions artifacts contain a ready-to-copy SD payload (NROs + system scripts).
 $payload = Join-Path $PSScriptRoot 'sd'
 if (Test-Path -LiteralPath $payload) {
+    Write-Host '[RGSS-NX] Installing runtime payload on SD...'
     Copy-DirectoryContents -Source $payload -Destination $sd
 }
 
-$targetName = if ($Profile -eq 'infinite-fusion-2') { 'InfiniteFusion2' } else {
+# Source-tree usage is also supported: install the compatibility preload directly.
+$bootstrap = Resolve-PackageFile @(
+    (Join-Path $PSScriptRoot 'compat\preload\rgss_nx_bootstrap.rb'),
+    (Join-Path $PSScriptRoot '..\..\rgss-nx\compat\preload\rgss_nx_bootstrap.rb')
+)
+if ($bootstrap) {
+    $preloadTarget = Join-Path $runtimeRoot 'system\mkxp-z\Scripts\Preload'
+    New-Item -ItemType Directory -Force -Path $preloadTarget | Out-Null
+    Copy-Item -LiteralPath $bootstrap -Destination (Join-Path $preloadTarget 'rgss_nx_bootstrap.rb') -Force
+}
+
+$targetName = if ($Profile -eq 'infinite-fusion-2') {
+    'InfiniteFusion2'
+} else {
     $leaf = Split-Path -Leaf $source
     if ([string]::IsNullOrWhiteSpace($leaf)) { 'Game' } else { $leaf }
 }
 $target = Join-Path (Join-Path $runtimeRoot 'games') $targetName
 
-Write-Host "[RGSS-NX] Copying game to $target"
+Write-Host "[RGSS-NX] Copying user game to $target"
 Copy-DirectoryContents -Source $source -Destination $target
 
-$bootstrap = Resolve-PackageFile @(
-    (Join-Path $PSScriptRoot 'compat\preload\rgss_nx_bootstrap.rb'),
-    (Join-Path $PSScriptRoot '..\..\rgss-nx\compat\preload\rgss_nx_bootstrap.rb')
-)
-$postload = Resolve-PackageFile @(
-    (Join-Path $PSScriptRoot 'compat\postload\rgss_nx_compat.rb'),
-    (Join-Path $PSScriptRoot '..\..\rgss-nx\compat\postload\rgss_nx_compat.rb')
-)
-$profileConfig = Resolve-PackageFile @(
-    (Join-Path $PSScriptRoot "profiles\$Profile\RGSSNX.mkxp.json"),
-    (Join-Path $PSScriptRoot "..\..\rgss-nx\profiles\$Profile\RGSSNX.mkxp.json")
-)
-
-$compatTarget = Join-Path $target 'RGSSNX\compat'
-New-Item -ItemType Directory -Force -Path $compatTarget | Out-Null
-Copy-Item -LiteralPath $bootstrap -Destination (Join-Path $compatTarget 'rgss_nx_bootstrap.rb') -Force
-Copy-Item -LiteralPath $postload -Destination (Join-Path $compatTarget 'rgss_nx_compat.rb') -Force
-Copy-Item -LiteralPath $profileConfig -Destination (Join-Path $target 'RGSSNX.mkxp.json') -Force
+# Do not inject or overwrite Game.ini/mkxp.json. The mkxp-z core reads the
+# fangame's original configuration after mounting the directory selected here.
+$content = Join-Path $target 'Game.ini'
+if (-not (Test-Path -LiteralPath $content)) {
+    throw "The copied game is missing Game.ini at $content"
+}
 
 $scripts = Join-Path $target 'Data\Scripts.rxdata'
 if (-not (Test-Path -LiteralPath $scripts)) {
-    Write-Warning "Data\Scripts.rxdata was not found. The game may use an uncommon RGSS layout; use the generic RGSS-NX browser first."
+    Write-Warning "Data\Scripts.rxdata was not found. The game may use an uncommon RGSS layout; try the generic RGSS-NX browser and keep the resulting log."
 }
 
-Write-Host ""
-Write-Host "[RGSS-NX] Installation complete"
+$genericNro = Join-Path $runtimeRoot 'RGSS-NX.nro'
+$if2Nro = Join-Path $runtimeRoot 'RGSS-NX-IF2.nro'
+if (-not (Test-Path -LiteralPath $genericNro)) {
+    Write-Warning "RGSS-NX.nro is not installed yet. Run this script from the extracted RGSS-NX-M1-Switch artifact, or copy its sd folder to the SD card."
+}
+
+Write-Host ''
+Write-Host '[RGSS-NX] Installation complete'
 Write-Host "Profile : $Profile"
 Write-Host "Game    : $target"
-Write-Host "Content : $(Join-Path $target 'RGSSNX.mkxp.json')"
+Write-Host "Content : $content"
 if ($Profile -eq 'infinite-fusion-2') {
-    Write-Host "Launch  : /switch/RGSS-NX/RGSS-NX-IF2.nro"
+    if (-not (Test-Path -LiteralPath $if2Nro)) {
+        Write-Warning 'RGSS-NX-IF2.nro is not installed; the generic NRO can still load Game.ini manually.'
+    }
+    Write-Host 'Launch  : /switch/RGSS-NX/RGSS-NX-IF2.nro'
 } else {
-    Write-Host "Launch  : /switch/RGSS-NX/RGSS-NX.nro, then load RGSSNX.mkxp.json"
+    Write-Host 'Launch  : /switch/RGSS-NX/RGSS-NX.nro, then load the game Game.ini'
 }

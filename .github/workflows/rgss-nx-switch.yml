@@ -82,6 +82,7 @@ jobs:
       - name: Build mkxp-z core for libnx
         shell: bash
         run: |
+          set -euo pipefail
           git config --global --add safe.directory "$(pwd)"
           CLICOLOR_FORCE=1 meson setup build \
             --cross-file libretro/meson-switch.txt \
@@ -97,7 +98,8 @@ jobs:
         id: retroarch
         shell: bash
         run: |
-          tag_name=$(curl -s https://api.github.com/repos/libretro/RetroArch/releases/latest | grep '"tag_name"' | head -1 | cut -d '"' -f 4)
+          set -euo pipefail
+          tag_name=$(curl -fsSL https://api.github.com/repos/libretro/RetroArch/releases/latest | python -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
           test -n "$tag_name"
           echo "tag=$tag_name" >> "$GITHUB_OUTPUT"
 
@@ -106,6 +108,7 @@ jobs:
         env:
           RA_TAG: ${{ steps.retroarch.outputs.tag }}
         run: |
+          set -euo pipefail
           cd "$RUNNER_TEMP"
           git clone https://github.com/libretro/RetroArch retroarch-generic --depth 1 -b "$RA_TAG"
           cp libretro_libnx.a retroarch-generic/
@@ -138,7 +141,7 @@ jobs:
           CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
 
           mkdir -p "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX"
-          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX" "RGSS-NX contributors" "0.2.0" "$RUNNER_TEMP/rgss-nx.nacp"
+          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX" "RGSS-NX contributors" "0.2.1" "$RUNNER_TEMP/rgss-nx.nacp"
           /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
             "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX.nro" \
             --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
@@ -149,6 +152,7 @@ jobs:
         env:
           RA_TAG: ${{ steps.retroarch.outputs.tag }}
         run: |
+          set -euo pipefail
           cd "$RUNNER_TEMP"
           git clone https://github.com/libretro/RetroArch retroarch-if2 --depth 1 -b "$RA_TAG"
           cp libretro_libnx.a retroarch-if2/
@@ -177,7 +181,7 @@ jobs:
              static char *rgss_nx_argv[] = {NULL, NULL, NULL};
              romfsInit();
              rgss_nx_argv[0] = strdup("retroarch");
-             rgss_nx_argv[1] = strdup("sdmc:/switch/RGSS-NX/games/InfiniteFusion2/RGSSNX.mkxp.json");
+             rgss_nx_argv[1] = strdup("sdmc:/switch/RGSS-NX/games/InfiniteFusion2/Game.ini");
              argc = 2;
              argv = rgss_nx_argv;
              return rarch_main(argc, argv, NULL);
@@ -189,23 +193,22 @@ jobs:
 
           CLICOLOR_FORCE=1 make -j "$(nproc)" -f Makefile.libnx LIBRETRO=mkxp-z
 
-          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX IF2" "RGSS-NX contributors" "0.2.0" "$RUNNER_TEMP/rgss-nx-if2.nacp"
+          /opt/devkitpro/tools/bin/nacptool --create "RGSS-NX IF2" "RGSS-NX contributors" "0.2.1" "$RUNNER_TEMP/rgss-nx-if2.nacp"
           /opt/devkitpro/tools/bin/elf2nro retroarch_switch.elf \
             "$GITHUB_WORKSPACE/dist/sd/switch/RGSS-NX/RGSS-NX-IF2.nro" \
             --romfsdir="$GITHUB_WORKSPACE/rgss-nx/switch/romfs" \
             --nacp="$RUNNER_TEMP/rgss-nx-if2.nacp"
 
-      - name: Package installer, profiles and diagnostics
+      - name: Package runtime, installer and diagnostics
         shell: bash
         run: |
-          mkdir -p dist/compat/preload dist/compat/postload
-          mkdir -p dist/profiles/generic-rmxp dist/profiles/infinite-fusion-2
-          mkdir -p dist/smoke-test
+          set -euo pipefail
+          mkdir -p dist/sd/switch/RGSS-NX/system/mkxp-z/Scripts/Preload
+          mkdir -p dist/compat/preload dist/smoke-test
 
+          cp rgss-nx/compat/preload/rgss_nx_bootstrap.rb \
+            dist/sd/switch/RGSS-NX/system/mkxp-z/Scripts/Preload/
           cp rgss-nx/compat/preload/rgss_nx_bootstrap.rb dist/compat/preload/
-          cp rgss-nx/compat/postload/rgss_nx_compat.rb dist/compat/postload/
-          cp rgss-nx/profiles/generic-rmxp/RGSSNX.mkxp.json dist/profiles/generic-rmxp/
-          cp rgss-nx/profiles/infinite-fusion-2/RGSSNX.mkxp.json dist/profiles/infinite-fusion-2/
           cp rgss-nx/smoke-test/mkxp.json rgss-nx/smoke-test/smoke.rb dist/smoke-test/
           cp tools/rgss-nx/Install-Game.ps1 dist/
           cp tools/rgss-nx/Inspect-Game.ps1 dist/
@@ -215,11 +218,13 @@ jobs:
       - name: Verify M1 package
         shell: bash
         run: |
+          set -euo pipefail
           test -s dist/sd/switch/RGSS-NX/RGSS-NX.nro
           test -s dist/sd/switch/RGSS-NX/RGSS-NX-IF2.nro
+          test -s dist/sd/switch/RGSS-NX/system/mkxp-z/Scripts/Preload/rgss_nx_bootstrap.rb
           test -s dist/Install-Game.ps1
-          test -s dist/profiles/infinite-fusion-2/RGSSNX.mkxp.json
-          find dist -maxdepth 6 -type f -print
+          grep -q 'InfiniteFusion2/Game.ini' .github/workflows/rgss-nx-switch.yml
+          find dist -maxdepth 9 -type f -print
 
       - uses: actions/upload-artifact@v4
         with:
