@@ -1,0 +1,2406 @@
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads
+git clone -q --depth 1 https://github.com/ruby/ruby /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby -b v3_3_10
+git clone -q --depth 1 https://github.com/yaml/libyaml /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml -b 0.2.5
+git clone -q --depth 1 https://github.com/madler/zlib /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/zlib -b v1.3.1
+git clone -q --depth 1 https://github.com/WebAssembly/wabt /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt -b 1.0.37
+warning: refs/tags/0.2.5 65d19898a301b817261003b00d1dcef00895a7b4 is not a commit!
+Note: switching to '2c891fc7a770e8ba2fec34fc6b545c672beb37e6'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2
+curl -L -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2/picosha2.h https://raw.githubusercontent.com/okdshin/PicoSHA2/161cb3fc4170fa7a3eca9e582cebd27cc4d1fe29/picosha2.h
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 13422  100 13422    0     0   183k      0 --:--:-- --:--:-- --:--:--  184k
+rm -rf /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/preload
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/preload
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1
+cp ../scripts/preload/kgl2_wrap.rb ../scripts/preload/mkxp_wrap.rb ../scripts/preload/ruby_classic_wrap.rb ../scripts/preload/win32_wrap.rb /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/preload/
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/preload && zip -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/preload.zip *
+  adding: kgl2_wrap.rb (deflated 78%)
+  adding: mkxp_wrap.rb (deflated 50%)
+  adding: ruby_classic_wrap.rb (deflated 51%)
+  adding: win32_wrap.rb (deflated 64%)
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/preload
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/boost_predef
+git clone -q --depth 1 https://github.com/boostorg/predef /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/boost_predef -b boost-1.90.0
+warning: refs/tags/v1.3.1 925af44f3cde53c6b076611c297850091b5dc7bb is not a commit!
+Note: switching to '51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml && autoreconf -i
+Note: switching to '5e81f6aeddf94fd7743c8c2049f5084c74ff6ab1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Note: switching to 'e1211a4ca467bb6512e99025772ca25afa8d6159'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt && git apply /home/runner/work/mkxp-z/mkxp-z/libretro/wasm2c-data-segments.patch
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/zlib && CHOST=linux CC=/home/runner/work/_temp/wasi-sdk/bin/clang CXX=/home/runner/work/_temp/wasi-sdk/bin/clang++ LD=/home/runner/work/_temp/wasi-sdk/bin/clang AR=/home/runner/work/_temp/wasi-sdk/bin/llvm-ar RANLIB=/home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib CFLAGS='--target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG' CXXFLAGS='--target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu++11 -O3 -DNDEBUG' LDFLAGS=' -flto' ./configure --static
+sed \
+	-e 's/#cmakedefine WABT_VERSION_STRING "@WABT_VERSION_STRING@"/#define WABT_VERSION_STRING "1.0.37 (mkxp-z internal use)"/' \
+	-e 's/#cmakedefine WABT_DEBUG @WABT_DEBUG@/#define WABT_DEBUG 0/' \
+	-e 's/#cmakedefine01 HAVE_SNPRINTF/#define HAVE_SNPRINTF 1/' \
+	-e 's/#cmakedefine01 HAVE_STRCASECMP/#define HAVE_STRCASECMP 1/' \
+	-e 's/#cmakedefine01 COMPILER_IS_GNU/#define COMPILER_IS_GNU 1/' \
+	-e 's/#cmakedefine01 \(\w*\)/#define \1 0/' \
+	/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/config.h.in > /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include/wabt/config.h
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/apply-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/apply-names.cc
+Using /home/runner/work/_temp/wasi-sdk/bin/llvm-ar
+Building static library libz.a version 1.3.1 with /home/runner/work/_temp/wasi-sdk/bin/clang.
+Checking for size_t... Yes.
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+Checking for strerror... Yes.
+Checking for unistd.h... Yes.
+Checking for stdarg.h... Yes.
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+Note: switching to '343ea050023cfc0374fdea6fdf625b2f57b716a4'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Checking for vsnprintf() in stdio.h... Yes.
+Checking for return value of vsnprintf()... Yes.
+Checking for attribute(visibility) support... Yes.
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-ir.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-ir.cc
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: copying file 'config/ltmain.sh'
+libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && git apply /home/runner/work/mkxp-z/mkxp-z/libretro/ruby-compat.patch
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && git apply /home/runner/work/mkxp-z/mkxp-z/libretro/ruby-prng-time.patch
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && git apply /home/runner/work/mkxp-z/mkxp-z/libretro/ruby-lto.patch
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && git apply /home/runner/work/mkxp-z/mkxp-z/libretro/ruby-sockets.patch
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && git apply /home/runner/work/mkxp-z/mkxp-z/libretro/ruby-user-threads.patch
+echo '#include "/home/runner/work/mkxp-z/mkxp-z/libretro/ruby-bindings.h"' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/gc.c
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-logging.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-logging.cc
+configure.ac:56: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+configure.ac:56: You should run autoupdate.
+aclocal.m4:122: AC_PROG_LIBTOOL is expanded from...
+configure.ac:56: the top level
+configure.ac:62: warning: The macro `AC_HEADER_STDC' is obsolete.
+configure.ac:62: You should run autoupdate.
+./lib/autoconf/headers.m4:704: AC_HEADER_STDC is expanded from...
+configure.ac:62: the top level
+configure.ac:51: installing 'config/compile'
+configure.ac:56: installing 'config/config.guess'
+configure.ac:56: installing 'config/config.sub'
+configure.ac:30: installing 'config/install-sh'
+configure.ac:30: installing 'config/missing'
+src/Makefile.am: installing 'config/depcomp'
+parallel-tests: installing 'config/test-driver'
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer-spec.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer-spec.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binding-hash.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binding-hash.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/color.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/color.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/common.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/common.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/config.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/config.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/decompiler.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/decompiler.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/error-formatter.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/error-formatter.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/expr-visitor.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/expr-visitor.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/feature.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/feature.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/filenames.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/filenames.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/generate-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/generate-names.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir-util.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir-util.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/leb128.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/leb128.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source-line-finder.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source-line-finder.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/literal.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/literal.cc
+cc -std=gnu17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode-code-table.c.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode-code-table.c
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/option-parser.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/option-parser.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/resolve-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/resolve-names.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/sha256.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/sha256.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/shared-validator.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/shared-validator.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/stream.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/stream.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/token.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/token.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tracing.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tracing.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/type-checker.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/type-checker.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/utf8.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/utf8.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/validator.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/validator.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-lexer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-lexer.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-parser.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-parser.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wat-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wat-writer.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/c-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/c-writer.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_top.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_top.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_bottom.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_bottom.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_includes.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_includes.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_declarations.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/binary-reader-interp.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/binary-reader-interp.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp-util.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp-util.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/istream.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/istream.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/picosha2 -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tools/wasm2c.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tools/wasm2c.cc
+c++ -std=gnu++17  -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/include -c -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/indexer.o indexer.cpp
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && ruby tool/downloader.rb -d tool -e gnu config.guess config.sub
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml && ./configure --host wasm32-wasip2 CC=/home/runner/work/_temp/wasi-sdk/bin/clang CXX=/home/runner/work/_temp/wasi-sdk/bin/clang++ LD=/home/runner/work/_temp/wasi-sdk/bin/clang AR=/home/runner/work/_temp/wasi-sdk/bin/llvm-ar RANLIB=/home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib CFLAGS='--target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG' CXXFLAGS='--target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu++11 -O3 -DNDEBUG' LDFLAGS=' -flto'
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/zlib && make install DESTDIR=/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib
+make[1]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/zlib'
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o adler32.o adler32.c
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for wasm32-wasip2-strip... /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o crc32.o crc32.c
+no
+checking for strip... strip
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for wasm32-wasip2-gcc... /home/runner/work/_temp/wasi-sdk/bin/clang
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o deflate.o deflate.c
+checking whether the C compiler works... /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o infback.o infback.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o inffast.o inffast.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o inflate.o inflate.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o inftrees.o inftrees.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o trees.o trees.c
+downloading config.guess ... done
+downloading config.sub ... done
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && autoreconf -i
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o zutil.o zutil.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o compress.o compress.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o uncompr.o uncompr.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzclose.o gzclose.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzlib.o gzlib.c
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzread.o gzread.c
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/bin
+c++  -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/bin/wasm2c /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/apply-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-ir.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-logging.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer-spec.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binding-hash.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/color.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/common.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/config.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/decompiler.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/error-formatter.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/expr-visitor.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/feature.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/filenames.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/generate-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir-util.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/leb128.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source-line-finder.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/literal.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode-code-table.c.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/option-parser.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/resolve-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/sha256.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/shared-validator.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/stream.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/token.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tracing.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/type-checker.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/utf8.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/validator.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-lexer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-parser.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wat-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/c-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_top.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_bottom.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_includes.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/binary-reader-interp.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp-util.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/istream.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tools/wasm2c.cc.o
+/home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzwrite.o gzwrite.c
+/home/runner/work/_temp/wasi-sdk/bin/llvm-ar rc libz.a adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o 
+rm -f /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/libz.a
+cp libz.a /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib
+chmod 644 /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/libz.a
+rm -f /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/share/man/man3/zlib.3
+cp zlib.3 /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/share/man/man3
+chmod 644 /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/share/man/man3/zlib.3
+rm -f /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/pkgconfig/zlib.pc
+cp zlib.pc /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/pkgconfig
+chmod 644 /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/pkgconfig/zlib.pc
+rm -f /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include/zlib.h /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include/zconf.h
+cp zlib.h zconf.h /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include
+chmod 644 /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include/zlib.h /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include/zconf.h
+make[1]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/zlib'
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/bin
+c++  -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/bin/indexer /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/apply-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-ir.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader-logging.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-reader.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer-spec.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binary.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/binding-hash.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/color.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/common.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/config.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/decompiler.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/error-formatter.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/expr-visitor.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/feature.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/filenames.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/generate-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir-util.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/ir.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/leb128.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source-line-finder.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/lexer-source.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/literal.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode-code-table.c.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/opcode.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/option-parser.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/resolve-names.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/sha256.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/shared-validator.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/stream.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/token.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/tracing.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/type-checker.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/utf8.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/validator.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-lexer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wast-parser.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/wat-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/c-writer.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_top.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_header_bottom.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_includes.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_simd_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/prebuilt/wasm2c_atomicops_source_declarations.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/binary-reader-interp.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/interp-util.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/interp/istream.cc.o /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/wabt/src/indexer.o
+yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /home/runner/work/_temp/wasi-sdk/bin/clang accepts -g... yes
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang option to enable C11 features... unsupported
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang option to enable C99 features... none needed
+checking whether /home/runner/work/_temp/wasi-sdk/bin/clang understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of /home/runner/work/_temp/wasi-sdk/bin/clang... gcc3
+checking how to run the C preprocessor... /home/runner/work/_temp/wasi-sdk/bin/clang -E
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking build system type... x86_64-pc-linux-gnux32
+checking host system type... wasm32-unknown-wasip2
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by /home/runner/work/_temp/wasi-sdk/bin/clang... /home/runner/work/_temp/wasi-sdk/bin/clang
+checking if the linker (/home/runner/work/_temp/wasi-sdk/bin/clang) is GNU ld... no
+checking for BSD- or MS-compatible name lister (nm)... no
+checking for wasm32-wasip2-dumpbin... no
+checking for wasm32-wasip2-link... no
+checking for dumpbin... no
+checking for link... link -dump
+configure: WARNING: using cross tools not prefixed with host triplet
+checking the name lister (nm) interface... BSD nm
+checking the maximum length of command line arguments... 3145728
+checking how to convert x86_64-pc-linux-gnux32 file names to wasm32-unknown-wasip2 format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnux32 file names to toolchain format... func_convert_file_noop
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang option to reload object files... -r
+checking for wasm32-wasip2-file... no
+checking for file... file
+checking for wasm32-wasip2-objdump... no
+checking for objdump... objdump
+checking how to recognize dependent libraries... unknown
+checking for wasm32-wasip2-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for wasm32-wasip2-ar... /home/runner/work/_temp/wasi-sdk/bin/llvm-ar
+checking for archiver @FILE support... @
+checking for wasm32-wasip2-strip... strip
+checking for wasm32-wasip2-ranlib... /home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib
+checking command to parse nm output from /home/runner/work/_temp/wasi-sdk/bin/clang object... failed
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for wasm32-wasip2-mt... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /home/runner/work/_temp/wasi-sdk/bin/clang supports -fno-rtti -fno-exceptions... yes
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang option to produce PIC... -fPIC -DPIC
+checking if /home/runner/work/_temp/wasi-sdk/bin/clang PIC flag -fPIC -DPIC works... yes
+checking if /home/runner/work/_temp/wasi-sdk/bin/clang static flag -static works... yes
+checking if /home/runner/work/_temp/wasi-sdk/bin/clang supports -c -o file.o... yes
+checking if /home/runner/work/_temp/wasi-sdk/bin/clang supports -c -o file.o... (cached) yes
+checking whether the /home/runner/work/_temp/wasi-sdk/bin/clang linker (/home/runner/work/_temp/wasi-sdk/bin/clang) supports shared libraries... no
+checking dynamic linker characteristics... no
+checking how to hardcode library paths into programs... unsupported
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... no
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking for doxygen... false
+checking for egrep... (cached) /usr/bin/grep -E
+checking for stdlib.h... (cached) yes
+checking for an ANSI C-conforming const... yes
+checking for size_t... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating yaml-0.1.pc
+config.status: creating include/Makefile
+config.status: creating src/Makefile
+config.status: creating Makefile
+config.status: creating tests/Makefile
+config.status: creating include/config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml && make install DESTDIR=/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib
+make[1]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml'
+Making install in include
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/include'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/include'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include'
+ /usr/bin/install -c -m 644  yaml.h '/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/include/.'
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/include'
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/include'
+Making install in src
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/src'
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT api.lo -MD -MP -MF .deps/api.Tpo -c -o api.lo api.c
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT reader.lo -MD -MP -MF .deps/reader.Tpo -c -o reader.lo reader.c
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT scanner.lo -MD -MP -MF .deps/scanner.Tpo -c -o scanner.lo scanner.c
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT parser.lo -MD -MP -MF .deps/parser.Tpo -c -o parser.lo parser.c
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT reader.lo -MD -MP -MF .deps/reader.Tpo -c reader.c -o reader.o
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT api.lo -MD -MP -MF .deps/api.Tpo -c api.c -o api.o
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT scanner.lo -MD -MP -MF .deps/scanner.Tpo -c scanner.c -o scanner.o
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT parser.lo -MD -MP -MF .deps/parser.Tpo -c parser.c -o parser.o
+mv -f .deps/reader.Tpo .deps/reader.Plo
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT loader.lo -MD -MP -MF .deps/loader.Tpo -c -o loader.lo loader.c
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT loader.lo -MD -MP -MF .deps/loader.Tpo -c loader.c -o loader.o
+mv -f .deps/api.Tpo .deps/api.Plo
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT writer.lo -MD -MP -MF .deps/writer.Tpo -c -o writer.lo writer.c
+mv -f .deps/parser.Tpo .deps/parser.Plo
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT emitter.lo -MD -MP -MF .deps/emitter.Tpo -c -o emitter.lo emitter.c
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT writer.lo -MD -MP -MF .deps/writer.Tpo -c writer.c -o writer.o
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT emitter.lo -MD -MP -MF .deps/emitter.Tpo -c emitter.c -o emitter.o
+mv -f .deps/loader.Tpo .deps/loader.Plo
+/bin/bash ../libtool  --tag=CC   --mode=compile /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT dumper.lo -MD -MP -MF .deps/dumper.Tpo -c -o dumper.lo dumper.c
+mv -f .deps/writer.Tpo .deps/writer.Plo
+libtool: compile:  /home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include -I../include -Wall --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT dumper.lo -MD -MP -MF .deps/dumper.Tpo -c dumper.c -o dumper.o
+mv -f .deps/dumper.Tpo .deps/dumper.Plo
+mv -f .deps/scanner.Tpo .deps/scanner.Plo
+mv -f .deps/emitter.Tpo .deps/emitter.Plo
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -no-undefined -release 0 -version-info 2:9:0 -flto -o libyaml.la -rpath /usr/local/lib api.lo reader.lo scanner.lo parser.lo loader.lo writer.lo emitter.lo dumper.lo  
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/llvm-ar cr .libs/libyaml.a  api.o reader.o scanner.o parser.o loader.o writer.o emitter.o dumper.o
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib .libs/libyaml.a
+libtool: link: ( cd ".libs" && rm -f "libyaml.la" && ln -s "../libyaml.la" "libyaml.la" )
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/src'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libyaml.la '/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libyaml.lai /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/libyaml.la
+libtool: install: /usr/bin/install -c .libs/libyaml.a /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/libyaml.a
+libtool: install: chmod 644 /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/libyaml.a
+libtool: install: /home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/libyaml.a
+libtool: warning: remember to run 'libtool --finish /usr/local/lib'
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/src'
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/src'
+Making install in .
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 yaml-0.1.pc '/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local/lib/pkgconfig'
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml'
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml'
+Making install in tests
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/tests'
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-scanner.o -MD -MP -MF .deps/run-scanner.Tpo -c -o run-scanner.o run-scanner.c
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-parser.o -MD -MP -MF .deps/run-parser.Tpo -c -o run-parser.o run-parser.c
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-loader.o -MD -MP -MF .deps/run-loader.Tpo -c -o run-loader.o run-loader.c
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-emitter.o -MD -MP -MF .deps/run-emitter.Tpo -c -o run-emitter.o run-emitter.c
+mv -f .deps/run-scanner.Tpo .deps/run-scanner.Po
+mv -f .deps/run-parser.Tpo .deps/run-parser.Po
+mv -f .deps/run-loader.Tpo .deps/run-loader.Po
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-dumper.o -MD -MP -MF .deps/run-dumper.Tpo -c -o run-dumper.o run-dumper.c
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT example-reformatter.o -MD -MP -MF .deps/example-reformatter.Tpo -c -o example-reformatter.o example-reformatter.c
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT example-reformatter-alt.o -MD -MP -MF .deps/example-reformatter-alt.Tpo -c -o example-reformatter-alt.o example-reformatter-alt.c
+mv -f .deps/run-emitter.Tpo .deps/run-emitter.Po
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT example-deconstructor.o -MD -MP -MF .deps/example-deconstructor.Tpo -c -o example-deconstructor.o example-deconstructor.c
+mv -f .deps/example-reformatter.Tpo .deps/example-reformatter.Po
+mv -f .deps/example-reformatter-alt.Tpo .deps/example-reformatter-alt.Po
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT example-deconstructor-alt.o -MD -MP -MF .deps/example-deconstructor-alt.Tpo -c -o example-deconstructor-alt.o example-deconstructor-alt.c
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-parser-test-suite.o -MD -MP -MF .deps/run-parser-test-suite.Tpo -c -o run-parser-test-suite.o run-parser-test-suite.c
+mv -f .deps/run-dumper.Tpo .deps/run-dumper.Po
+/home/runner/work/_temp/wasi-sdk/bin/clang -DHAVE_CONFIG_H -I. -I../include  -I../include -Wall   --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -MT run-emitter-test-suite.o -MD -MP -MF .deps/run-emitter-test-suite.Tpo -c -o run-emitter-test-suite.o run-emitter-test-suite.c
+mv -f .deps/run-parser-test-suite.Tpo .deps/run-parser-test-suite.Po
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-scanner run-scanner.o ../src/libyaml.la 
+mv -f .deps/example-deconstructor.Tpo .deps/example-deconstructor.Po
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-parser run-parser.o ../src/libyaml.la 
+mv -f .deps/example-deconstructor-alt.Tpo .deps/example-deconstructor-alt.Po
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-loader run-loader.o ../src/libyaml.la 
+mv -f .deps/run-emitter-test-suite.Tpo .deps/run-emitter-test-suite.Po
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-emitter run-emitter.o ../src/libyaml.la 
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-scanner run-scanner.o  ../src/.libs/libyaml.a
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-parser run-parser.o  ../src/.libs/libyaml.a
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-loader run-loader.o  ../src/.libs/libyaml.a
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-emitter run-emitter.o  ../src/.libs/libyaml.a
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-dumper run-dumper.o ../src/libyaml.la 
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o example-reformatter example-reformatter.o ../src/libyaml.la 
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o example-reformatter-alt example-reformatter-alt.o ../src/libyaml.la 
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-dumper run-dumper.o  ../src/.libs/libyaml.a
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o example-reformatter example-reformatter.o  ../src/.libs/libyaml.a
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o example-reformatter-alt example-reformatter-alt.o  ../src/.libs/libyaml.a
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o example-deconstructor example-deconstructor.o ../src/libyaml.la 
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o example-deconstructor example-deconstructor.o  ../src/.libs/libyaml.a
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o example-deconstructor-alt example-deconstructor-alt.o ../src/libyaml.la 
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-parser-test-suite run-parser-test-suite.o ../src/libyaml.la 
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o example-deconstructor-alt example-deconstructor-alt.o  ../src/.libs/libyaml.a
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-parser-test-suite run-parser-test-suite.o  ../src/.libs/libyaml.a
+/bin/bash ../libtool  --tag=CC   --mode=link /home/runner/work/_temp/wasi-sdk/bin/clang  --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG  -flto -o run-emitter-test-suite run-emitter-test-suite.o ../src/libyaml.la 
+libtool: link: /home/runner/work/_temp/wasi-sdk/bin/clang --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -flto -o run-emitter-test-suite run-emitter-test-suite.o  ../src/.libs/libyaml.a
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/tests'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/tests'
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml/tests'
+make[1]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/libyaml'
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && ./configure \
+	--prefix=/Dist \
+	--host wasm32-wasip2 \
+	--build x86_64-pc-linux-gnu \
+	--with-static-linked-ext \
+	--with-ext=bigdecimal,cgi/escape,continuation,coverage,date,digest/bubblebabble,digest,digest/md5,digest/rmd160,digest/sha1,digest/sha2,etc,fcntl,fiber,json,json/generator,json/parser,nkf,objspace,pathname,psych,racc/cparse,rbconfig/sizeof,ripper,stringio,strscan,monitor,zlib,io/wait,socket \
+	--with-libyaml-dir=/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local \
+	--with-zlib-dir=/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/usr/local \
+	--with-baseruby=ruby \
+	WASMOPT=/home/runner/work/_temp/binaryen/bin/wasm-opt \
+	WASI_SDK_PATH=/home/runner/work/_temp/wasi-sdk \
+	CC=/home/runner/work/_temp/wasi-sdk/bin/clang CXX=/home/runner/work/_temp/wasi-sdk/bin/clang++ LD=/home/runner/work/_temp/wasi-sdk/bin/clang AR=/home/runner/work/_temp/wasi-sdk/bin/llvm-ar RANLIB=/home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib \
+	CFLAGS='--target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -Dmprotect=mkxp_sandbox_mprotect' \
+	CXXFLAGS='--target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu++11 -O3 -DNDEBUG -Dmprotect=mkxp_sandbox_mprotect' \
+	LDFLAGS='-fuse-ld=/home/runner/work/_temp/wasi-sdk/bin/wasm-ld -Wl,--export-dynamic,--stack-first,-z,stack-size=2097152  -flto' \
+	XCFLAGS='-DWASM_SETJMP_STACK_BUFFER_SIZE=24576 -DWASM_FIBER_STACK_BUFFER_SIZE=24576 -DWASM_SCAN_STACK_BUFFER_SIZE=24576' \
+	optflags='-fno-fast-math' \
+	wasmoptflags='--enable-bulk-memory --no-inline=Init_* -O4 --pass-arg=asyncify-ignore-imports' \
+	ac_cv_func_realpath=no \
+	 \
+	 \
+	--disable-rubygems \
+	--disable-install-doc
+::group::[93menvironment section[m
+tool/config.guess already exists
+tool/config.sub already exists
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... wasm32-unknown-wasip2
+checking target system type... wasm32-unknown-wasip2
+checking for wasm32-wasip2-wasm-opt... /home/runner/work/_temp/binaryen/bin/wasm-opt
+checking wheather $WASI_SDK_PATH is set... yes
+checking for wasm32-wasip2-gcc... /home/runner/work/_temp/wasi-sdk/bin/clang
+checking for /home/runner/work/_temp/wasi-sdk/bin/ld... /home/runner/work/_temp/wasi-sdk/bin/clang
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-ar... /home/runner/work/_temp/wasi-sdk/bin/llvm-ar
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang++... /home/runner/work/_temp/wasi-sdk/bin/clang++
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-nm... no
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-objcopy... no
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-objdump... no
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib... /home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-strip... no
+checking for wasm32-wasip2-gcc... (cached) /home/runner/work/_temp/wasi-sdk/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /home/runner/work/_temp/wasi-sdk/bin/clang accepts -g... yes
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang option to enable C11 features... unsupported
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang option to enable C99 features... none needed
+checking whether the compiler supports GNU C++... yes
+checking whether /home/runner/work/_temp/wasi-sdk/bin/clang++ accepts -g... yes
+checking for /home/runner/work/_temp/wasi-sdk/bin/clang++ option to enable C++11 features... none needed
+checking how to run the C preprocessor... /home/runner/work/_temp/wasi-sdk/bin/clang -E
+checking for wasm32-wasip2-ranlib... (cached) /home/runner/work/_temp/wasi-sdk/bin/llvm-ranlib
+checking for wasm32-wasip2-gar... (cached) /home/runner/work/_temp/wasi-sdk/bin/llvm-ar
+checking for wasm32-wasip2-gas... no
+checking for wasm32-wasip2-as... no
+checking for gas... no
+checking for as... as
+configure: WARNING: using cross tools not prefixed with host triplet
+checking for wasm32-wasip2-gld... (cached) /home/runner/work/_temp/wasi-sdk/bin/clang
+checking for wasm32-wasip2-gnm... no
+checking for wasm32-wasip2-nm... no
+checking for gnm... no
+checking for nm... nm
+checking for wasm32-wasip2-gobjcopy... no
+checking for wasm32-wasip2-objcopy... no
+checking for gobjcopy... no
+checking for objcopy... objcopy
+checking for wasm32-wasip2-gobjdump... no
+checking for wasm32-wasip2-objdump... no
+checking for gobjdump... no
+checking for objdump... objdump
+checking for wasm32-wasip2-gstrip... no
+checking for wasm32-wasip2-strip... no
+checking for gstrip... no
+checking for strip... strip
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for wchar.h... yes
+checking for minix/config.h... no
+checking for vfork.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking whether _XOPEN_SOURCE should be defined... no
+checking whether the linker is GNU ld... yes
+checking whether /home/runner/work/_temp/wasi-sdk/bin/clang -E accepts -o... yes
+checking for /home/runner/work/_temp/wasi-sdk/bin/llvm-ar flags... rcD
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for wasm32-wasip2-dtrace... no
+checking for dot... no
+checking for doxygen... no
+checking for wasm32-wasip2-pkg-config... no
+checking for pkg-config... pkg-config
+checking whether it is Android... no
+checking for cd using physical directory... cd -P
+::group::[93mcompiler section[m
+checking whether CFLAGS is valid... yes
+checking whether LDFLAGS is valid... yes
+checking whether ELF binaries are produced... no
+checking whether -Wl,-rpath,. is accepted as LDFLAGS... yes
+checking whether -fdeclspec is accepted as LDFLAGS... yes
+checking whether -fdeclspec is accepted as CXXFLAGS... yes
+checking whether -Wextra-tokens is accepted as CFLAGS... yes
+checking whether -Wdeprecated-declarations is accepted as CFLAGS... yes
+checking whether -Wdivision-by-zero is accepted as CFLAGS... yes
+checking whether -Wdiv-by-zero is accepted as CFLAGS... yes
+checking whether -Wduplicated-cond is accepted as CFLAGS... no
+checking whether -Wimplicit-function-declaration is accepted as CFLAGS... yes
+checking whether -Wimplicit-int is accepted as CFLAGS... yes
+checking whether -Wpointer-arith is accepted as CFLAGS... yes
+checking whether -Wshorten-64-to-32 is accepted as CFLAGS... yes
+checking whether -Wwrite-strings is accepted as CFLAGS... yes
+checking whether -Wold-style-definition is accepted as CFLAGS... yes
+checking whether -Wimplicit-fallthrough=0 is accepted as CFLAGS... no
+checking whether -Wmissing-noreturn is accepted as CFLAGS... yes
+checking whether -Wno-cast-function-type is accepted as CFLAGS... yes
+checking whether -Wno-constant-logical-operand is accepted as CFLAGS... yes
+checking whether -Wno-long-long is accepted as CFLAGS... yes
+checking whether -Wno-missing-field-initializers is accepted as CFLAGS... yes
+checking whether -Wno-overlength-strings is accepted as CFLAGS... yes
+checking whether -Wno-packed-bitfield-compat is accepted as CFLAGS... no
+checking whether -Wno-parentheses-equality is accepted as CFLAGS... yes
+checking whether -Wno-self-assign is accepted as CFLAGS... yes
+checking whether -Wno-tautological-compare is accepted as CFLAGS... yes
+checking whether -Wno-unused-parameter is accepted as CFLAGS... yes
+checking whether -Wno-unused-value is accepted as CFLAGS... yes
+checking whether -Wsuggest-attribute=format is accepted as CFLAGS... no
+checking whether -Wsuggest-attribute=noreturn is accepted as CFLAGS... no
+checking whether -Wunused-variable is accepted as CFLAGS... yes
+checking whether -diag-disable=175,188,1684,2259,2312 is accepted as CFLAGS... no
+checking whether -Wno-maybe-uninitialized is accepted as CFLAGS... no
+checking whether -Wmisleading-indentation is accepted as CFLAGS... yes
+checking whether -Wundef is accepted as CFLAGS... yes
+checking whether -Wall -Wextra is accepted as CFLAGS... yes
+checking whether -Qunused-arguments is accepted as CFLAGS... yes
+checking whether -fno-fast-math -D_FORTIFY_SOURCE=2 is accepted as CFLAGS... yes
+checking for -fstack-protector... no
+checking whether -Wl,--compress-debug-sections=zlib is accepted as LDFLAGS... no
+checking whether -fno-strict-overflow is accepted as CFLAGS... yes
+checking whether -ggdb3 is accepted as CFLAGS... yes
+checking whether -fvisibility=hidden is accepted as CFLAGS... yes
+checking whether -fno-fast-math is accepted as CFLAGS... yes
+checking whether -fexcess-precision=standard is accepted as CFLAGS... yes
+checking whether -fp-model precise is accepted as CFLAGS... no
+checking whether compiler has statement and declarations in expressions... yes
+::group::[93mheader and library section[m
+checking thread model... none
+checking whether CXXFLAGS is valid... yes
+checking for crypt in -lcrypt... yes
+checking for dlopen in -ldl... yes
+checking for shutdown in -lsocket... no
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking for _Bool... yes
+checking for stdbool.h that conforms to C99... yes
+checking for sys/wait.h that is POSIX.1 compatible... no
+checking for afunix.h... no
+checking for atomic.h... no
+checking for copyfile.h... no
+checking for direct.h... no
+checking for grp.h... no
+checking for fcntl.h... yes
+checking for float.h... yes
+checking for ieeefp.h... no
+checking for intrinsics.h... no
+checking for langinfo.h... yes
+checking for limits.h... yes
+checking for locale.h... yes
+checking for malloc.h... yes
+checking for malloc/malloc.h... no
+checking for malloc_np.h... no
+checking for net/socket.h... no
+checking for process.h... no
+checking for pwd.h... no
+checking for sanitizer/asan_interface.h... no
+checking for sanitizer/msan_interface.h... no
+checking for setjmpex.h... no
+checking for stdalign.h... yes
+checking for stdio.h... (cached) yes
+checking for sys/attr.h... no
+checking for sys/eventfd.h... yes
+checking for sys/fcntl.h... yes
+checking for sys/file.h... yes
+checking for sys/id.h... no
+checking for sys/ioctl.h... yes
+checking for sys/mkdev.h... no
+checking for sys/param.h... yes
+checking for sys/prctl.h... no
+checking for sys/random.h... yes
+checking for sys/resource.h... yes
+checking for sys/select.h... yes
+checking for sys/sendfile.h... no
+checking for sys/socket.h... yes
+checking for sys/syscall.h... yes
+checking for sys/sysmacros.h... no
+checking for sys/time.h... yes
+checking for sys/times.h... yes
+checking for sys/uio.h... yes
+checking for sys/utime.h... no
+checking for syscall.h... yes
+checking for time.h... yes
+checking for ucontext.h... no
+checking for utime.h... yes
+checking for sys/epoll.h... no
+checking for sys/event.h... no
+checking for stdatomic.h... yes
+checking for gmp.h... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking whether byte ordering is bigendian... no
+checking for an ANSI C-conforming const... yes
+checking whether char is unsigned... no
+checking for inline... inline
+checking for working volatile... yes
+checking for typeof syntax and keyword spelling... typeof
+checking for C/C++ restrict keyword... __restrict__
+checking for long long... yes
+checking for off_t... yes
+checking char bit... 8
+checking size of int... 4
+checking size of short... 2
+checking size of long... 4
+checking size of long long... 8
+checking size of __int64... 0
+checking size of __int128... 16
+checking size of off_t... 8
+checking size of void*... 4
+checking size of float... 4
+checking size of double... 8
+checking size of time_t... 8
+checking size of clock_t... 8
+checking packed struct attribute... x __attribute__((packed))
+checking whether -Wno-address-of-packed-member is accepted as CFLAGS... yes
+checking for printf prefix for long long... ll
+checking for pid_t... yes
+checking for convertible type of pid_t... INT
+checking for uid_t... yes
+checking for convertible type of uid_t... UINT
+checking for gid_t... yes
+checking for convertible type of gid_t... UINT
+checking for time_t... yes
+checking for convertible type of time_t... LL
+checking for dev_t... yes
+checking for convertible type of dev_t... ULL
+checking for mode_t... yes
+checking for convertible type of mode_t... UINT
+checking for rlim_t... no
+checking for convertible type of rlim_t... LONG
+checking for off_t... (cached) yes
+checking for convertible type of off_t... LL
+checking for clockid_t... yes
+checking for convertible type of clockid_t... PTR
+checking for variable length macro... yes
+checking if _Alignof() works... yes
+checking for CONSTFUNC function attribute... __attribute__ ((__const__)) x
+checking for PUREFUNC function attribute... __attribute__ ((__pure__)) x
+checking for NORETURN function attribute... __attribute__ ((__noreturn__)) x
+checking for DEPRECATED function attribute... __attribute__ ((__deprecated__)) x
+checking for DEPRECATED_BY function attribute... __attribute__ ((__deprecated__("by "#n))) x
+checking for NOINLINE function attribute... __attribute__ ((__noinline__)) x
+checking for ALWAYS_INLINE function attribute... __attribute__ ((__always_inline__)) x
+checking for NO_SANITIZE function attribute... __attribute__ ((__no_sanitize__(san))) x
+checking for NO_SANITIZE_ADDRESS function attribute... __attribute__ ((__no_sanitize_address__)) x
+checking for NO_ADDRESS_SAFETY_ANALYSIS function attribute... __attribute__ ((__no_address_safety_analysis__)) x
+checking for WARN_UNUSED_RESULT function attribute... __attribute__ ((__warn_unused_result__)) x
+checking for MAYBE_UNUSED function attribute... __attribute__ ((__unused__)) x
+checking for ERRORFUNC function attribute... __attribute__ ((__error__ mesg)) x
+checking for WARNINGFUNC function attribute... __attribute__ ((__warning__ mesg)) x
+checking for WEAK function attribute... __attribute__ ((__weak__)) x
+checking for __attribute__((__depreacted__(msg))) in C++... yes
+checking for std::nullptr_t... yes
+checking for FUNC_STDCALL function attribute... x
+checking for FUNC_CDECL function attribute... __attribute__ ((__cdecl__)) x
+checking for FUNC_FASTCALL function attribute... x
+checking for FUNC_UNOPTIMIZED function attribute... x
+checking for FUNC_MINIMIZED function attribute... x
+checking for function alias... alias
+checking for __atomic builtins... yes
+checking for __sync builtins... yes
+checking for __builtin_unreachable... yes
+checking for __assume... no
+checking for exported function attribute... __attribute__ ((__visibility__("default")))
+checking for RUBY_FUNC_NONNULL function attribute... __attribute__ ((__nonnull__(n))) x
+checking for function name string predefined identifier... __func__
+checking if enum over int is allowed... yes
+checking for /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/tool/wasm-clangw /home/runner/work/_temp/wasi-sdk/bin/clang options needed to detect all undeclared functions... none needed
+checking whether sys_nerr is declared... no
+checking whether getenv is declared... yes
+checking for size_t... yes
+checking size of size_t... 4
+checking size of ptrdiff_t... 4
+checking size of dev_t... 8
+checking for printf prefix for size_t... z
+checking for printf prefix for ptrdiff_t... t
+checking for struct stat.st_blksize... yes
+checking for struct stat.st_blocks... yes
+checking for struct stat.st_rdev... yes
+checking size of struct stat.st_size... SIZEOF_OFF_T
+checking size of struct stat.st_blocks... SIZEOF_OFF_T
+checking size of struct stat.st_ino... SIZEOF_LONG_LONG
+checking size of struct stat.st_dev... SIZEOF_DEV_T
+checking size of struct stat.st_rdev... SIZEOF_DEV_T
+checking for struct stat.st_atim... yes
+checking for struct stat.st_atimespec... no
+checking for struct stat.st_atimensec... no
+checking for struct stat.st_mtim... yes
+checking for struct stat.st_mtimespec... no
+checking for struct stat.st_mtimensec... no
+checking for struct stat.st_ctim... yes
+checking for struct stat.st_ctimespec... no
+checking for struct stat.st_ctimensec... no
+checking for struct stat.st_birthtimespec... no
+checking for struct statx.stx_btime... no
+checking for struct timeval... yes
+checking size of struct timeval.tv_sec... SIZEOF_TIME_T
+checking for struct timespec... yes
+checking for struct timezone... yes
+checking for fd_mask... no
+checking for int8_t... yes
+checking size of int8_t... 1
+checking for uint8_t... yes
+checking size of uint8_t... 1
+checking for int16_t... yes
+checking size of int16_t... 2
+checking for uint16_t... yes
+checking size of uint16_t... 2
+checking for int32_t... yes
+checking size of int32_t... 4
+checking for uint32_t... yes
+checking size of uint32_t... 4
+checking for int64_t... yes
+checking size of int64_t... 8
+checking for uint64_t... yes
+checking size of uint64_t... 8
+checking for int128_t... __int128
+checking for uint128_t... unsigned __int128
+checking for intptr_t... yes
+checking size of intptr_t... 4
+checking for uintptr_t... yes
+checking size of uintptr_t... 4
+checking for printf prefix for intptr_t... NONE
+checking for ssize_t... yes
+checking size of ssize_t... 4
+checking for printf prefix for int64_t... NONE
+checking for stack end address... no
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for uid_t in sys/types.h... (cached) yes
+checking type of array argument to getgroups... int
+checking for working alloca.h... yes
+checking for alloca... yes
+checking for dynamic size alloca... ok
+checking for working memcmp... no
+checking for acosh... yes
+checking for cbrt... yes
+checking for crypt... yes
+checking for erf... yes
+checking for explicit_bzero... yes
+checking for ffs... yes
+checking for flock... no
+checking for hypot... yes
+checking for lgamma_r... yes
+checking for memmove... yes
+checking for nan... yes
+checking for nextafter... yes
+checking for setproctitle... no
+checking for strchr... yes
+checking for strerror... yes
+checking for strlcat... yes
+checking for strlcpy... yes
+checking for strstr... yes
+checking for tgamma... yes
+checking for sys/pstat.h... no
+checking for pid_t... (cached) yes
+checking for fork... no
+checking for vfork... no
+checking for __syscall... no
+checking for _longjmp... no
+checking for arc4random_buf... yes
+checking for atan2l... yes
+checking for atan2f... yes
+checking whether atomic_signal_fence is declared... yes
+checking for chmod... yes
+checking for chown... no
+checking for chroot... no
+checking for chsize... no
+checking for clock_gettime... yes
+checking for copy_file_range... no
+checking for cosh... yes
+checking for crypt_r... yes
+checking for daemon... (cached) no
+checking for dirfd... yes
+checking for dl_iterate_phdr... no
+checking for dlopen... yes
+checking for dladdr... no
+checking for dup3... no
+checking for eaccess... no
+checking for endgrent... no
+checking for eventfd... no
+checking for execl... no
+checking for execle... no
+checking for execv... no
+checking for execve... no
+checking for explicit_memset... no
+checking for fcopyfile... no
+checking for fchdir... no
+checking for fchmod... yes
+checking for fchown... no
+checking for fcntl... yes
+checking for fdatasync... yes
+checking for fdopendir... yes
+checking for fgetattrlist... no
+checking for fmod... yes
+checking for fstatat... yes
+checking for fsync... yes
+checking for ftruncate... yes
+checking for ftruncate64... no
+checking for getattrlist... no
+checking for getcwd... yes
+checking for getegid... no
+checking for getentropy... yes
+checking for geteuid... no
+checking for getgid... no
+checking for getgidx... no
+checking for getgrnam... no
+checking for getgrnam_r... no
+checking for getgroups... no
+checking for getlogin... no
+checking for getlogin_r... no
+checking for getpgid... no
+checking for getpgrp... no
+checking for getppid... no
+checking for getpriority... no
+checking for getpwnam... no
+checking for getpwnam_r... no
+checking for getpwuid... no
+checking for getpwuid_r... no
+checking for getrandom... no
+checking for getresgid... no
+checking for getresuid... no
+checking for getrlimit... no
+checking for getsid... no
+checking for gettimeofday... yes
+checking for getuid... no
+checking for getuidx... no
+checking for gmtime_r... yes
+checking for grantpt... no
+checking for initgroups... no
+checking for ioctl... yes
+checking for isfinite... no
+checking for issetugid... no
+checking for kill... no
+checking for killpg... no
+checking for lchmod... no
+checking for lchown... no
+checking for link... yes
+checking for llabs... yes
+checking for lockf... no
+checking for log2... yes
+checking for lstat... yes
+checking for lutimes... no
+checking for malloc_usable_size... yes
+checking for malloc_size... no
+checking for malloc_trim... no
+checking for mblen... yes
+checking for memalign... no
+checking for memset_s... no
+checking for writev... yes
+checking for memrchr... yes
+checking for memmem... yes
+checking for mkfifo... no
+checking for mknod... no
+checking for mktime... yes
+checking for mmap... yes
+checking for mremap... no
+checking for openat... yes
+checking for pclose... no
+checking for pipe... no
+checking for pipe2... no
+checking for poll... yes
+checking for popen... no
+checking for posix_fadvise... yes
+checking for posix_madvise... no
+checking for posix_memalign... yes
+checking for ppoll... no
+checking for pread... yes
+checking for pwrite... yes
+checking for qsort_r... yes
+checking for qsort_s... no
+checking for readlink... yes
+checking for realpath... (cached) no
+checking for round... yes
+checking for sched_getaffinity... no
+checking for seekdir... yes
+checking for select_large_fdset... no
+checking for sendfile... no
+checking for setegid... no
+checking for setenv... yes
+checking for seteuid... no
+checking for setgid... no
+checking for setgroups... no
+checking for setpgid... no
+checking for setpgrp... no
+checking for setregid... no
+checking for setresgid... no
+checking for setresuid... no
+checking for setreuid... no
+checking for setrgid... no
+checking for setrlimit... no
+checking for setruid... no
+checking for setsid... no
+checking for setuid... no
+checking for shutdown... (cached) no
+checking for sigaction... no
+checking for sigaltstack... no
+checking for sigprocmask... no
+checking for sinh... yes
+checking for snprintf... yes
+checking for spawnv... no
+checking for symlink... yes
+checking for syscall... no
+checking for sysconf... yes
+checking for system... no
+checking for tanh... yes
+checking for telldir... yes
+checking for timegm... yes
+checking for times... yes
+checking for truncate... yes
+checking for truncate64... no
+checking for tzset... no
+checking for umask... no
+checking for unsetenv... yes
+checking for utimensat... yes
+checking for utimes... yes
+checking for wait4... no
+checking for waitpid... no
+checking for __cospi... no
+checking for __sinpi... no
+checking if getcwd allocates buffer if NULL is given... no
+checking for crypt.h... yes
+checking for struct crypt_data.initialized... yes
+checking for __builtin_alloca_with_align... yes
+checking for __builtin_assume_aligned... yes
+checking for __builtin_bswap16... yes
+checking for __builtin_bswap32... yes
+checking for __builtin_bswap64... yes
+checking for __builtin_popcount... yes
+checking for __builtin_popcountll... yes
+checking for __builtin_clz... yes
+checking for __builtin_clzl... yes
+checking for __builtin_clzll... yes
+checking for __builtin_ctz... yes
+checking for __builtin_ctzll... yes
+checking for __builtin_add_overflow... yes
+checking for __builtin_sub_overflow... yes
+checking for __builtin_mul_overflow... yes
+checking for __builtin_mul_overflow_p... no
+checking for __builtin_constant_p... yes
+checking for __builtin_choose_expr... yes
+checking for __builtin_choose_expr_constant_p... yes
+checking for __builtin_types_compatible_p... yes
+checking for __builtin_trap... yes
+checking for __builtin_expect... yes
+checking for __builtin_mul_overflow with long long arguments... yes
+checking whether qsort_r is GNU version... yes
+checking whether qsort_r is BSD version... yes
+checking whether atan2 handles Inf as C99... yes
+checking for clock_getres... yes
+checking for timer_create in -lrt... no
+checking for timer_settime in -lrt... no
+checking for unsetenv returns a value... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct tm.tm_zone... yes
+checking for struct tm.tm_gmtoff... yes
+checking for external int daylight... no
+checking for negative time_t for gmtime(3)... yes
+checking for localtime(3) overflow correctly... no
+checking for sigsetmask... no
+checking for BSD signal semantics... no
+checking for sig_t... yes
+checking whether getpgrp requires zero arguments... yes
+checking whether right shift preserve sign bit... yes
+checking for copy_file_range... no
+checking whether _SC_CLK_TCK is supported... yes
+checking stack growing direction on wasm32... 0
+checking native coroutine implementation for wasm32-wasip2... asyncify
+checking if signal.h defines ucontext_t... no
+checking for sys/user.h... no
+checking whether PAGE_SIZE is compile-time const... no
+checking ioctl request type... unsigned long
+::group::[93mruntime section[m
+checking for mach-o/loader.h... no
+checking whether OS depend dynamic link works... unknown
+checking for backtrace... no
+checking for valgrind/memcheck.h... no
+checking for strip flags... none needed
+checking whether dtrace USDT is available... no
+checking for __builtin_setjmp... no
+checking for _setjmpex as a macro or function... no
+checking for _setjmp as a macro or function... (cached) no
+checking for sigsetjmp as a macro or function... no
+checking for setjmp type... setjmp
+::group::[93minstallation section[m
+::group::[93mJIT section[m
+checking for rustc... rustc
+checking whether rustc works for YJIT... no
+::group::[93mbuild section[m
+checking for prefix of external symbols... NONE
+::endgroup::
+.ext/include/wasm32-wasip2/ruby/config.h updated
+configure: ruby library version = 3.3.0
+configure: creating ./config.status
+config.status: creating GNUmakefile
+config.status: creating Makefile
+---
+Configuration summary for ruby version 3.3.10
+
+   * Installation prefix: /Dist
+   * exec prefix:         ${prefix}
+   * arch:                wasm32-wasip2
+   * site arch:           ${arch}
+   * RUBY_BASE_NAME:      ruby
+   * ruby lib prefix:     ${libdir}/${RUBY_BASE_NAME}
+   * site libraries path: ${rubylibprefix}/${sitearch}
+   * vendor path:         ${rubylibprefix}/vendor_ruby
+   * target OS:           wasip2
+   * compiler:            $(CC_WRAPPER) \
+                          /home/runner/work/_temp/wasi-sdk/bin/clang
+   * with thread:         none
+   * with coroutine:      asyncify
+   * enable shared libs:  no
+   * dynamic library ext: so
+   * CFLAGS:              -fdeclspec ${optflags} ${debugflags} ${warnflags}
+   * LDFLAGS:             -L. \
+                          -fuse-ld=/home/runner/work/_temp/wasi-sdk/bin/wasm\
+                          -ld \
+                          -Wl,--export-dynamic,--stack-first,-z,stack-size=2\
+                          097152  -flto
+   * DLDFLAGS:            -fuse-ld=/home/runner/work/_temp/wasi-sdk/bin/wasm\
+                          -ld \
+                          -Wl,--export-dynamic,--stack-first,-z,stack-size=2\
+                          097152  -flto
+   * optflags:            -fno-fast-math
+   * debugflags:          -ggdb3
+   * warnflags:           -Wall -Wextra -Wextra-tokens \
+                          -Wdeprecated-declarations -Wdivision-by-zero \
+                          -Wdiv-by-zero -Wimplicit-function-declaration \
+                          -Wimplicit-int -Wpointer-arith -Wshorten-64-to-32 \
+                          -Wwrite-strings -Wold-style-definition \
+                          -Wmissing-noreturn -Wno-cast-function-type \
+                          -Wno-constant-logical-operand -Wno-long-long \
+                          -Wno-missing-field-initializers \
+                          -Wno-overlength-strings -Wno-parentheses-equality \
+                          -Wno-self-assign -Wno-tautological-compare \
+                          -Wno-unused-parameter -Wno-unused-value \
+                          -Wunused-variable -Wmisleading-indentation -Wundef
+   * strip command:       strip
+   * install doc:         no
+   * YJIT support:        no
+   * RJIT support:        no
+   * man page type:       doc
+   * static-linked-ext:   yes
+   * BASERUBY -v:         ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) \
+                          [x86_64-linux-gnu]
+
+---
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby && make install DESTDIR=/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib
+echo -e '#include <ruby.h>\n#include <ruby/encoding.h>' | /home/runner/work/_temp/wasi-sdk/bin/clang -E -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/include -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/.ext/include/wasm32-wasip2 -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/tags.c -
+make[1]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+ctags --fields=kS --kinds-c=epx -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/tags /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/tags.c
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/sandbox-bindgen
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib && ruby /home/runner/work/mkxp-z/mkxp-z/libretro/sandbox-bindgen.rb
+generating id.h
+revision.h updated
+Downloading bundled gem minitest-5.20.0...
+id.h updated
+Downloading bundled gem power_assert-2.0.3...
+mv /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/mkxp-sandbox-bindgen.h /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/sandbox-bindgen
+mv /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/mkxp-sandbox-bindgen.cpp /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/sandbox-bindgen
+Downloading bundled gem rake-13.1.0...
+Downloading bundled gem test-unit-3.6.1...
+Downloading bundled gem rexml-3.4.4...
+Downloading bundled gem rss-0.3.1...
+/bin/sh ./tool/ifchange "--timestamp=.rbconfig.time" rbconfig.rb rbconfig.tmp
+rbconfig.rb updated
+Downloading bundled gem net-ftp-0.3.4...
+Downloading bundled gem net-imap-0.4.21...
+Downloading bundled gem net-pop-0.1.2...
+Downloading bundled gem net-smtp-0.5.1...
+Downloading bundled gem matrix-0.4.2...
+Downloading bundled gem prime-0.1.2...
+Downloading bundled gem rbs-3.4.0...
+Downloading bundled gem typeprof-0.21.9...
+Downloading bundled gem debug-1.9.2...
+Downloading bundled gem racc-1.7.3...
+/usr/bin/mkdir -p .bundle/gems
+	BASERUBY = ruby --disable=gems
+	CC = /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/tool/wasm-clangw /home/runner/work/_temp/wasi-sdk/bin/clang
+	LD = /home/runner/work/_temp/wasi-sdk/bin/clang
+	LDSHARED = /home/runner/work/_temp/wasi-sdk/bin/clang
+	CFLAGS = --target=wasm32-wasip2 -mbulk-memory -flto -DMKXPZ_RUBY_HAVE_USER_THREADS -std=gnu99 -O3 -DNDEBUG -Dmprotect=mkxp_sandbox_mprotect -fdeclspec -fno-fast-math -ggdb3 -Wall -Wextra -Wextra-tokens -Wdeprecated-declarations -Wdivision-by-zero -Wdiv-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wold-style-definition -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wmisleading-indentation -Wundef  -D_WASI_EMULATED_SIGNAL -D_WASI_EMULATED_MMAN -D_WASI_EMULATED_GETPID -D_WASI_EMULATED_PROCESS_CLOCKS 
+	XCFLAGS = -DWASM_SETJMP_STACK_BUFFER_SIZE=24576 -DWASM_FIBER_STACK_BUFFER_SIZE=24576 -DWASM_SCAN_STACK_BUFFER_SIZE=24576 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fno-strict-overflow -fvisibility=hidden -fexcess-precision=standard -DRUBY_EXPORT -I. -I.ext/include/wasm32-wasip2 -I.ext/include -I./include -I. -I./prism -I./enc/unicode/15.0.0  
+	CPPFLAGS = -D_WASI_EMULATED_SIGNAL -D_WASI_EMULATED_MMAN -D_WASI_EMULATED_GETPID -D_WASI_EMULATED_PROCESS_CLOCKS   -DDISABLE_RUBYGEMS=1
+	DLDFLAGS = -fuse-ld=/home/runner/work/_temp/wasi-sdk/bin/wasm-ld -Wl,--export-dynamic,--stack-first,-z,stack-size=2097152  -flto  
+	SOLIBS = -ldl -lcrypt -lm -lwasi-emulated-mman -lwasi-emulated-signal -lwasi-emulated-getpid -lwasi-emulated-process-clocks 
+	LANG = C.UTF-8
+	LC_ALL = 
+	LC_CTYPE = 
+	MFLAGS = -w -j4 --jobserver-auth=3,4
+	RUSTC = rustc
+	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/yjit/target/release/' ./yjit/src/lib.rs
+ruby --disable=gems ./tool/gen_dummy_probes.rb ./probes.d > probes.dmyh
+clang version 21.1.4-wasi-sdk (https://github.com/llvm/llvm-project 222fc11f2b8f25f6a0f4976272ef1bb7bf49521d)
+Target: wasm32-unknown-wasi
+Thread model: posix
+InstalledDir: /home/runner/work/_temp/wasi-sdk/bin
+Configuration file: /home/runner/work/_temp/wasi-sdk/bin/clang.cfg
+generating optinsn.inc
+generating optunifs.inc
+generating insns.inc
+generating insns_info.inc
+generating vmtc.inc
+generating vm.inc
+generating node_name.inc
+generating known_errors.inc
+generating vm_call_iseq_optimized.inc
+/usr/bin/mkdir -p enc/jis
+known_errors.inc updated
++ cp enc/jis/props.h.blt enc/jis/props.h
+generating encdb.h
+compiling dln.c
+vm_call_iseq_optimized.inc updated
+compiling localeinit.c
+creating verconf.h
+encdb.h updated
+making array.rbinc
+verconf.h updated
+making ast.rbinc
+dln.c:125:66: warning: initializer-string for character array is too long, array size is 5 but initializer has size 6 (including the null terminating character); did you mean to use the 'nonstring' attribute? [-Wunterminated-string-initialization]
+  125 | static const char funcname_prefix[sizeof(FUNCNAME_PREFIX) - 1] = FUNCNAME_PREFIX;
+      |                                                                  ^~~~~~~~~~~~~~~
+dln.c:101:25: note: expanded from macro 'FUNCNAME_PREFIX'
+  101 | #define FUNCNAME_PREFIX EXTERNAL_PREFIX"Init_"
+      |                         ^~~~~~~~~~~~~~~~~~~~~~
+dln.c:99:26: note: expanded from macro 'EXTERNAL_PREFIX'
+   99 | # define EXTERNAL_PREFIX ""
+      |                          ^
+1 warning generated.
+compiling bignum.c
+compiling compar.c
+compiling class.c
+compiling complex.c
+compiling cont.c
+class.c:1270:29: warning: unused variable 'add_subclass' [-Wunused-variable]
+ 1270 |     int method_changed = 0, add_subclass;
+      |                             ^~~~~~~~~~~~
+1 warning generated.
+compiling debug.c
+compiling debug_counter.c
+making dir.rbinc
+compiling encoding.c
+compiling dln_find.c
+compiling enum.c
+compiling enumerator.c
+making warning.rbinc
+compiling file.c
+making gc.rbinc
+making prelude.rbinc
+making io.rbinc
+compiling io_buffer.c
+compiling iseq.c
+making marshal.rbinc
+compiling math.c
+compiling memory_view.c
+making rjit.rbinc
+making rjit_c.rbinc
+compiling node.c
+compiling node_dump.c
+making numeric.rbinc
+making kernel.rbinc
+making nilclass.rbinc
+making pack.rbinc
+generating parse.c
+copying lex.c
+compiling parser_st.c
+compiling proc.c
+compiling process.c
+making ractor.rbinc
+compiling random.c
+random.c:700:21: warning: unused variable 'tv' [-Wunused-variable]
+  700 |     struct timespec tv;
+      |                     ^~
+1 warning generated.
+compiling range.c
+compiling rational.c
+compiling re.c
+compiling regcomp.c
+compiling regenc.c
+compiling regerror.c
+compiling regexec.c
+compiling regparse.c
+compiling regsyntax.c
+compiling ruby.c
+compiling ruby_parser.c
+compiling scheduler.c
+compiling shape.c
+compiling signal.c
+compiling sprintf.c
+compiling st.c
+compiling strftime.c
+compiling struct.c
+generating id.c
+id.c updated
+making symbol.rbinc
+making thread_sync.rbinc
+making timev.rbinc
+compiling transcode.c
+compiling util.c
+compiling variable.c
+compiling vm_backtrace.c
+compiling vm_dump.c
+compiling vm_sync.c
+making trace_point.rbinc
+compiling weakmap.c
+compiling prism/options.c
+compiling prism/pack.c
+compiling prism/regexp.c
+compiling prism/util/pm_buffer.c
+compiling prism/util/pm_char.c
+compiling prism/util/pm_constant_pool.c
+compiling prism/util/pm_list.c
+compiling prism/util/pm_memchr.c
+compiling prism/util/pm_newline_list.c
+compiling prism/util/pm_state_stack.c
+compiling prism/util/pm_string.c
+compiling prism/util/pm_string_list.c
+compiling prism/util/pm_strncasecmp.c
+compiling prism/util/pm_strpbrk.c
+compiling prism/prism.c
+compiling prism_init.c
+compiling ./missing/memcmp.c
+generating enc/trans/newline.c ...
+compiling ./missing/flock.c
+compiling ./missing/setproctitle.c
+generating miniprelude.c
+compiling ./main.c
+compiling dmyext.c
+compiling dmyenc.c
+miniprelude.c updated
+generating lib/ruby_vm/rjit/instruction.rb
+generating wasm32-wasip2-fake.rb
+Extracting bundle gem minitest-5.20.0...
+Extracting bundle gem power_assert-2.0.3...
+wasm32-wasip2-fake.rb updated
+Extracting bundle gem rake-13.1.0...
+Unpacked gems/power_assert-2.0.3.gem
+Extracting bundle gem test-unit-3.6.1...
+Unpacked gems/minitest-5.20.0.gem
+Unpacked gems/rake-13.1.0.gem
+Extracting bundle gem rexml-3.4.4...
+Extracting bundle gem rss-0.3.1...
+Unpacked gems/rss-0.3.1.gem
+Unpacked gems/rexml-3.4.4.gem
+Unpacked gems/test-unit-3.6.1.gem
+Extracting bundle gem net-ftp-0.3.4...
+Extracting bundle gem net-imap-0.4.21...
+Extracting bundle gem net-pop-0.1.2...
+Unpacked gems/net-ftp-0.3.4.gem
+Unpacked gems/net-pop-0.1.2.gem
+Extracting bundle gem net-smtp-0.5.1...
+Extracting bundle gem matrix-0.4.2...
+Unpacked gems/net-imap-0.4.21.gem
+Extracting bundle gem prime-0.1.2...
+Unpacked gems/net-smtp-0.5.1.gem
+Unpacked gems/matrix-0.4.2.gem
+Extracting bundle gem rbs-3.4.0...
+Extracting bundle gem typeprof-0.21.9...
+Unpacked gems/prime-0.1.2.gem
+Extracting bundle gem debug-1.9.2...
+Unpacked gems/typeprof-0.21.9.gem
+Extracting bundle gem racc-1.7.3...
+Unpacked gems/debug-1.9.2.gem
+making dummy probes.h
+compiling loadpath.c
+Unpacked gems/rbs-3.4.0.gem
+compiling array.c
+compiling ast.c
+Unpacked gems/racc-1.7.3.gem
+compiling compile.c
+compiling dir.c
+compiling error.c
+compiling eval.c
+compiling gc.c
+compiling hash.c
+compiling inits.c
+compiling io.c
+gc.c:4078:1: warning: unused function 'objspace_each_pages' [-Wunused-function]
+ 4078 | objspace_each_pages(rb_objspace_t *objspace, each_page_callback *callback, void *data, bool protected)
+      | ^~~~~~~~~~~~~~~~~~~
+compiling load.c
+compiling marshal.c
+compiling rjit.c
+compiling rjit_c.c
+compiling numeric.c
+compiling object.c
+1 warning generated.
+compiling pack.c
+compiling parse.c
+compiling ractor.c
+compiling string.c
+compiling symbol.c
+symbol.c:161:13: warning: initializer-string for character array is too long, array size is 8 but initializer has size 9 (including the null terminating character); did you mean to use the 'nonstring' attribute? [-Wunterminated-string-initialization]
+  161 |             "instance",
+      |             ^~~~~~~~~~
+compiling thread.c
+1 warning generated.
+compiling time.c
+thread.c:639:5: warning: unused variable 'stack_grow_dir_detection' [-Wunused-variable]
+  639 |     STACK_GROW_DIR_DETECTION;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+./internal/gc.h:118:40: note: expanded from macro 'STACK_GROW_DIR_DETECTION'
+  118 | #define STACK_GROW_DIR_DETECTION VALUE stack_grow_dir_detection
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+thread.c:1238:1: warning: unused function 'getclockofday' [-Wunused-function]
+ 1238 | getclockofday(struct timespec *ts)
+      | ^~~~~~~~~~~~~
+2 warnings generated.
+compiling version.c
+compiling vm.c
+compiling vm_trace.c
+In file included from vm.c:514:
+./vm_insnhelper.c:5350:15: warning: unused variable 'tmp' [-Wunused-variable]
+ 5350 |         VALUE tmp = rb_class_real(RCLASS_SUPER(klass));
+      |               ^~~
+compiling prism/api_node.c
+compiling prism/api_pack.c
+compiling prism/diagnostic.c
+compiling prism/encoding.c
+compiling prism/extension.c
+compiling prism/node.c
+compiling prism/prettyprint.c
+compiling prism/serialize.c
+compiling prism/token_type.c
+compiling coroutine/asyncify/Context.c
+compiling enc/ascii.c
+compiling enc/us_ascii.c
+compiling enc/unicode.c
+compiling enc/utf_8.c
+compiling enc/trans/newline.c
+compiling wasm/missing.c
+compiling wasm/runtime.c
+compiling wasm/fiber.c
+compiling wasm/machine.c
+compiling wasm/setjmp.c
+compiling wasm/machine_core.S
+compiling wasm/setjmp_core.S
+compiling builtin.c
+generating enc.mk
+making srcs under enc
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+generating table from enc/trans/big5.c
+generating table from enc/trans/cesu_8.c
+generating enc/trans/cesu_8.c ...
+generating table from enc/trans/chinese.c
+generating table from enc/trans/ebcdic.c
+generating enc/trans/ebcdic.c ...
+generating table from enc/trans/emoji.c
+generating enc/trans/emoji.c ...
+generating table from enc/trans/emoji_iso2022_kddi.c
+generating enc/trans/chinese.c ...
+generating table from enc/trans/emoji_sjis_docomo.c
+generating enc/trans/emoji_iso2022_kddi.c ...
+generating table from enc/trans/emoji_sjis_kddi.c
+generating enc/trans/emoji_sjis_docomo.c ...
+generating table from enc/trans/emoji_sjis_softbank.c
+generating enc/trans/emoji_sjis_kddi.c ...
+generating table from enc/trans/escape.c
+generating enc/trans/escape.c ...
+generating table from enc/trans/gb18030.c
+1 warning generated.
+generating table from enc/trans/gbk.c
+generating enc/trans/emoji_sjis_softbank.c ...
+linking static-library libruby-static.a
+generating table from enc/trans/iso2022.c
+generating enc/trans/iso2022.c ...
+generating table from enc/trans/japanese.c
+generating enc/trans/japanese.c ...
+making libenc
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+compiling ./enc/encdb.c
+compiling ./enc/big5.c
+compiling ./enc/cesu_8.c
+generating enc/trans/gbk.c ...
+generating table from enc/trans/japanese_euc.c
+compiling ./enc/cp949.c
+compiling ./enc/emacs_mule.c
+compiling ./enc/euc_jp.c
+compiling ./enc/euc_kr.c
+compiling ./enc/euc_tw.c
+compiling ./enc/gb2312.c
+compiling ./enc/gb18030.c
+generating enc/trans/gb18030.c ...
+compiling ./enc/gbk.c
+generating table from enc/trans/japanese_sjis.c
+generating enc/trans/big5.c ...
+compiling ./enc/iso_8859_1.c
+generating table from enc/trans/korean.c
+compiling ./enc/iso_8859_2.c
+compiling ./enc/iso_8859_3.c
+compiling ./enc/iso_8859_4.c
+compiling ./enc/iso_8859_5.c
+generating enc/trans/japanese_sjis.c ...
+compiling ./enc/iso_8859_6.c
+generating table from enc/trans/single_byte.c
+compiling ./enc/iso_8859_7.c
+compiling ./enc/iso_8859_8.c
+generating enc/trans/japanese_euc.c ...
+generating table from enc/trans/utf8_mac.c
+compiling ./enc/iso_8859_9.c
+generating enc/trans/single_byte.c ...
+compiling ./enc/iso_8859_10.c
+generating enc/trans/korean.c ...
+compiling ./enc/iso_8859_11.c
+compiling ./enc/iso_8859_13.c
+compiling ./enc/iso_8859_14.c
+generating table from enc/trans/utf_16_32.c
+generating enc/trans/utf_16_32.c ...
+compiling ./enc/iso_8859_15.c
+compiling ./enc/iso_8859_16.c
+compiling ./enc/koi8_r.c
+compiling ./enc/koi8_u.c
+compiling ./enc/shift_jis.c
+compiling ./enc/utf_16be.c
+compiling ./enc/utf_16le.c
+compiling ./enc/utf_32be.c
+compiling ./enc/utf_32le.c
+compiling ./enc/windows_31j.c
+compiling ./enc/windows_1250.c
+compiling ./enc/windows_1251.c
+compiling ./enc/windows_1252.c
+compiling ./enc/windows_1253.c
+compiling ./enc/windows_1254.c
+compiling ./enc/windows_1257.c
+generating enc/trans/utf8_mac.c ...
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+generating transdb.h
+linking statically-linked encoding library enc/libenc.a
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+transdb.h updated
+generating makefiles ext/configure-ext.mk
+making libtrans
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+compiling ./enc/trans/transdb.c
+compiling ./enc/trans/big5.c
+compiling ./enc/trans/cesu_8.c
+ext/configure-ext.mk updated
+compiling ./enc/trans/chinese.c
+compiling ./enc/trans/ebcdic.c
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+configuring bigdecimal
+configuring cgi/escape
+compiling ./enc/trans/emoji.c
+configuring continuation
+compiling ./enc/trans/emoji_iso2022_kddi.c
+configuring coverage
+compiling ./enc/trans/emoji_sjis_docomo.c
+compiling ./enc/trans/emoji_sjis_kddi.c
+compiling ./enc/trans/emoji_sjis_softbank.c
+configuring date
+configuring digest
+configuring digest/bubblebabble
+configuring digest/md5
+compiling ./enc/trans/escape.c
+compiling ./enc/trans/gb18030.c
+configuring digest/rmd160
+configuring digest/sha1
+compiling ./enc/trans/gbk.c
+configuring digest/sha2
+compiling ./enc/trans/iso2022.c
+configuring etc
+compiling ./enc/trans/japanese.c
+compiling ./enc/trans/japanese_euc.c
+compiling ./enc/trans/japanese_sjis.c
+compiling ./enc/trans/korean.c
+compiling ./enc/trans/single_byte.c
+compiling ./enc/trans/utf8_mac.c
+compiling ./enc/trans/utf_16_32.c
+linking statically-linked transcoder library enc/libtrans.a
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+configuring fcntl
+configuring io/wait
+configuring json
+configuring json/generator
+configuring json/parser
+making libencs
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[2]: Nothing to be done for 'libencs'.
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+configuring monitor
+configuring nkf
+configuring objspace
+configuring pathname
+configuring psych
+configuring rbconfig/sizeof
+configuring ripper
+configuring socket
+configuring stringio
+configuring strscan
+configuring zlib
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+generating makefile exts.mk
+exts.mk updated
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/continuation'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/cgi/escape'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/bigdecimal'
+compiling continuation.c
+compiling escape.c
+compiling bigdecimal.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/coverage'
+compiling coverage.c
+linking static-library continuation.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/continuation'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/date'
+compiling date_core.c
+linking static-library escape.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/cgi/escape'
+compiling date_parse.c
+installing default coverage libraries
+linking static-library coverage.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/coverage'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest'
+compiling digest.c
+linking static-library digest.a
+installing digest libraries
+installing default digest libraries
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/etc'
+generating constant definitions
+compiling etc.c
+linking static-library etc.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/etc'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/fcntl'
+compiling fcntl.c
+linking static-library fcntl.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/fcntl'
+compiling missing.c
+compiling date_strftime.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/io/wait'
+compiling wait.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/json'
+linking static-library bigdecimal.a
+installing default bigdecimal libraries
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/bigdecimal'
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/json'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/monitor'
+compiling monitor.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/nkf'
+compiling nkf.c
+linking static-library wait.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/io/wait'
+installing default nkf libraries
+compiling date_strptime.c
+installing default monitor libraries
+linking static-library monitor.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/monitor'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/objspace'
+compiling object_tracing.c
+installing default date_core libraries
+compiling objspace.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/pathname'
+compiling pathname.c
+linking static-library date_core.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/date'
+installing default pathname libraries
+compiling objspace_dump.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/psych'
+compiling psych.c
+linking static-library pathname.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/pathname'
+compiling psych_emitter.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/rbconfig/sizeof'
+sizes.c updated
+limits.c updated
+compiling sizes.c
+linking static-library objspace.a
+installing default objspace libraries
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/objspace'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/ripper'
+generating eventids1.c from ../.././parse.y
+compiling limits.c
+compiling psych_parser.c
+generating eventids1.h from ../.././parse.y
+generating eventids2table.c from ../.././ext/ripper/eventids2.c
+extracting ripper.y from ../.././parse.y
+linking static-library sizeof.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/rbconfig/sizeof'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/socket'
+generating constant definitions
+compiling psych_to_ruby.c
+installing default socket libraries
+compiling init.c
+compiling psych_yaml_tree.c
+checking ../.././parse.y and ../.././ext/ripper/eventids2.c
+compiling eventids1.c
+linking static-library nkf.a
+compiling constants.c
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/nkf'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/stringio'
+compiling stringio.c
+linking static-library psych.a
+compiling eventids2.c
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/psych'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/strscan'
+compiling strscan.c
+compiling compiler ripper.y
+compiling basicsocket.c
+linking static-library strscan.a
+linking static-library stringio.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/strscan'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/zlib'
+compiling zlib.c
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/stringio'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+/usr/bin/mkdir -p ext
+zlib.c:2541:25: warning: default initialization of an object of type 'struct read_raw_arg' with const member leaves the object uninitialized [-Wdefault-const-init-field-unsafe]
+ 2541 |     struct read_raw_arg ra;
+      |                         ^
+zlib.c:2383:14: note: member 'argv' declared 'const' here
+ 2383 |         const VALUE argv[2]; /* for rb_funcallv */
+      |                     ^
+ext/extinit.c updated
+compiling ext/extinit.o
+compiling socket.c
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+compiling ipsocket.c
+generating ripper_init.c from ../.././ext/ripper/ripper_init.c.tmpl
+compiling tcpsocket.c
+installing default ripper libraries
+compiling tcpserver.c
+compiling sockssocket.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[3]: Nothing to be done for 'libencs'.
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/bubblebabble'
+compiling bubblebabble.c
+1 warning generated.
+linking static-library zlib.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/zlib'
+compiling udpsocket.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/md5'
+compiling md5init.c
+linking static-library bubblebabble.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/bubblebabble'
+compiling md5.c
+compiling unixsocket.c
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/rmd160'
+compiling rmd160init.c
+linking static-library md5.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/md5'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/sha1'
+compiling sha1init.c
+compiling unixserver.c
+compiling rmd160.c
+compiling sha1.c
+compiling option.c
+linking static-library rmd160.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/rmd160'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/sha2'
+compiling sha2init.c
+linking static-library sha1.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/sha1'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/json/generator'
+compiling generator.c
+compiling sha2.c
+compiling ancdata.c
+linking static-library sha2.a
+installing default sha2 libraries
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/digest/sha2'
+compiling raddrinfo.c
+compiling ifaddr.c
+linking static-library generator.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/json/generator'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/json/parser'
+compiling parser.c
+compiling ripper_init.c
+linking static-library socket.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/socket'
+linking static-library parser.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/json/parser'
+compiling ripper.c
+linking static-library ripper.a
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/ext/ripper'
+make[3]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+generating enc.mk
+compiling enc/encinit.c
+linking ruby
+make[3]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[2]: Entering directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+make[2]: Nothing to be done for 'note'.
+make[2]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+ruby --disable=gems -I/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby -rwasm32-wasip2-fake  -I`cd ./lib; pwd` --disable-gems -r./wasm32-wasip2-fake ./tool/rbinstall.rb --make="make" --dest-dir="/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib" --extout=".ext" --ext-build-dir="./ext" --mflags="-w -j4 --jobserver-auth=3,4" --make-flags="w -j4 --jobserver-auth=3,4 -- DESTDIR=/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib WASI_SDK=/home/runner/work/_temp/wasi-sdk WASM_OPT=/home/runner/work/_temp/binaryen/bin/wasm-opt" --data-mode=0644 --prog-mode=0755 --installed-list .installed.list --mantype="doc"  --gnumake --install=all --exclude=doc
+Installing to /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib
+installing binary commands:         /Dist/bin
+installing base libraries:          /Dist/lib
+installing arch files:              /Dist/lib/ruby/3.3.0/wasm32-wasip2
+installing pkgconfig data:          /Dist/lib/pkgconfig
+installing extension objects:       /Dist/lib/ruby/3.3.0/wasm32-wasip2
+installing extension objects:       /Dist/lib/ruby/site_ruby/3.3.0/wasm32-wasip2
+installing extension objects:       /Dist/lib/ruby/vendor_ruby/3.3.0/wasm32-wasip2
+installing extension headers:       /Dist/include/ruby-3.3.0/wasm32-wasip2
+installing extension scripts:       /Dist/lib/ruby/3.3.0
+installing extension scripts:       /Dist/lib/ruby/site_ruby/3.3.0
+installing extension scripts:       /Dist/lib/ruby/vendor_ruby/3.3.0
+installing extension headers:       /Dist/include/ruby-3.3.0/ruby
+installing command scripts:         /Dist/bin
+installing library scripts:         /Dist/lib/ruby/3.3.0
+installing common headers:          /Dist/include/ruby-3.3.0
+installing manpages:                /Dist/share/man/man1
+installing default gems from lib:   /var/lib/gems/3.3.0
+                                    abbrev 0.1.2
+                                    base64 0.2.0
+                                    benchmark 0.3.0
+                                    bundler 2.5.22
+                                    cgi 0.4.2
+                                    csv 3.2.8
+                                    delegate 0.3.1
+                                    did_you_mean 1.6.3
+                                    drb 2.2.0
+                                    english 0.8.0
+                                    erb 4.0.3
+                                    error_highlight 0.6.0
+                                    fileutils 1.7.2
+                                    find 0.2.0
+                                    forwardable 1.3.3
+                                    getoptlong 0.2.1
+                                    ipaddr 1.2.6
+                                    irb 1.13.1
+                                    logger 1.6.0
+                                    mutex_m 0.2.0
+                                    net-http 0.4.1
+                                    net-protocol 0.2.2
+                                    observer 0.1.2
+                                    open-uri 0.4.1
+                                    open3 0.2.1
+                                    optparse 0.4.0
+                                    ostruct 0.6.0
+                                    pp 0.5.0
+                                    prettyprint 0.2.0
+                                    prism 0.19.0
+                                    pstore 0.1.3
+                                    rdoc 6.6.3.1
+                                    readline 0.0.4
+                                    reline 0.5.10
+                                    resolv 0.3.1
+                                    resolv-replace 0.1.1
+                                    rinda 0.2.0
+                                    ruby2_keywords 0.0.5
+                                    securerandom 0.3.1
+                                    set 1.1.0
+                                    shellwords 0.2.0
+                                    singleton 0.2.0
+                                    syntax_suggest 2.0.1
+                                    tempfile 0.2.1
+                                    time 0.3.0
+                                    timeout 0.4.1
+                                    tmpdir 0.2.0
+                                    tsort 0.2.0
+                                    un 0.3.0
+                                    uri 0.13.3
+                                    weakref 0.1.3
+                                    yaml 0.3.0
+installing default gems from ext:   /var/lib/gems/3.3.0
+                                    bigdecimal 3.1.5
+                                    date 3.3.4
+                                    digest 3.1.1
+                                    etc 1.4.3
+                                    fcntl 1.1.0
+                                    io-wait 0.3.1
+                                    json 2.7.2
+                                    nkf 0.1.3
+                                    pathname 0.3.0
+                                    psych 5.1.2
+                                    stringio 3.1.1
+                                    strscan 3.0.9
+                                    zlib 3.1.1
+installing bundled gems:            /var/lib/gems/3.3.0
+                                    minitest 5.20.0
+                                    power_assert 2.0.3
+                                    rake 13.1.0
+                                    test-unit 3.6.1
+                                    rexml 3.4.4
+                                    rss 0.3.1
+                                    net-ftp 0.3.4
+                                    net-imap 0.4.21
+                                    net-pop 0.1.2
+                                    net-smtp 0.5.1
+                                    matrix 0.4.2
+                                    prime 0.1.2
+                                    rbs 3.4.0
+                                    typeprof 0.21.9
+                                    debug 1.9.2
+                                    racc 1.7.3
+installing bundled gem cache:       /var/lib/gems/3.3.0/cache
+make[1]: Leaving directory '/home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby'
+rm -rf /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby
+mkdir -p /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby
+cp -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/Dist /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist
+echo '32' > /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-num-outputs.txt
+/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/bin/indexer /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/Dist/bin/ruby > /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-indices.h
+echo 'wasm32-wasip2' > /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-target.txt
+echo '#ifndef RAPI_MAJOR' > /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+ruby -e 'puts "#define RAPI_MAJOR " + "3.3.10".split(".")[0]' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+rm /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/bin/ruby
+rm /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/libruby-static.a
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/include
+echo '#endif /* RAPI_MAJOR */' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+echo '#ifndef RAPI_MINOR' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+ruby -e 'puts "#define RAPI_MINOR " + "3.3.10".split(".")[1]' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/share
+rm -rf /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby/gems
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby/3.3.0/bundler
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby/3.3.0/rdoc
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby/3.3.0/rubygems
+echo '# This is a Ruby script that does nothing. We make Ruby load this file on startup just because Ruby needs to load a script on startup for some reason.' > /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/bin/mkxp-z
+cp /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/BSDL /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby
+cp /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/COPYING /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby
+cp /home/runner/work/mkxp-z/mkxp-z/libretro/build/downloads/ruby/COPYING.ja /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist/lib/ruby
+rm -f /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/dist.zip
+cd /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist && zip -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/dist.zip *
+  adding: bin/ (stored 0%)
+  adding: bin/racc (deflated 41%)
+  adding: bin/rake (deflated 40%)
+  adding: bin/mkxp-z (deflated 30%)
+  adding: bin/typeprof (deflated 42%)
+  adding: bin/syntax_suggest (deflated 45%)
+  adding: bin/rdbg (deflated 40%)
+  adding: bin/bundle (deflated 40%)
+  adding: bin/irb (deflated 40%)
+  adding: bin/ri (deflated 40%)
+  adding: bin/rbs (deflated 40%)
+  adding: bin/erb (deflated 40%)
+  adding: bin/gem (deflated 20%)
+  adding: bin/bundler (deflated 40%)
+  adding: bin/rdoc (deflated 41%)
+  adding: lib/ (stored 0%)
+  adding: lib/pkgconfig/ (stored 0%)
+  adding: lib/pkgconfig/ruby-3.3.pc (deflated 65%)
+  adding: lib/ruby/ (stored 0%)
+  adding: lib/ruby/COPYING (deflated 56%)
+  adding: lib/ruby/3.3.0/ (stored 0%)
+  adding: lib/ruby/3.3.0/mkmf.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/shellwords.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/irb.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/ostruct.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/csv.rb (deflated 78%)
+  adding: lib/ruby/3.3.0/objspace.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/fileutils.rb (deflated 80%)
+  adding: lib/ruby/3.3.0/rinda/ (stored 0%)
+  adding: lib/ruby/3.3.0/rinda/tuplespace.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/rinda/rinda.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/rinda/ring.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/error_highlight.rb (deflated 38%)
+  adding: lib/ruby/3.3.0/json.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/tsort.rb (deflated 80%)
+  adding: lib/ruby/3.3.0/syntax_suggest.rb (deflated 4%)
+  adding: lib/ruby/3.3.0/drb/ (stored 0%)
+  adding: lib/ruby/3.3.0/drb/extservm.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/drb/weakidconv.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/drb/gw.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/drb/invokemethod.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/drb/acl.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/drb/observer.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/drb/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/drb/eq.rb (deflated 39%)
+  adding: lib/ruby/3.3.0/drb/drb.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/drb/timeridconv.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/drb/unix.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/drb/extserv.rb (deflated 53%)
+  adding: lib/ruby/3.3.0/drb/ssl.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/base64.rb (deflated 78%)
+  adding: lib/ruby/3.3.0/cgi.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/tmpdir.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/singleton.rb (deflated 66%)
+  adding: lib/ruby/3.3.0/tempfile.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/syntax_suggest/ (stored 0%)
+  adding: lib/ruby/3.3.0/syntax_suggest/block_expand.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/syntax_suggest/pathname_from_message.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/syntax_suggest/left_right_lex_count.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/syntax_suggest/ripper_errors.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/syntax_suggest/cli.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/syntax_suggest/capture_code_context.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/syntax_suggest/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/syntax_suggest/display_code_with_line_numbers.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/syntax_suggest/code_block.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/syntax_suggest/explain_syntax.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/syntax_suggest/priority_queue.rb (deflated 66%)
+  adding: lib/ruby/3.3.0/syntax_suggest/scan_history.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/syntax_suggest/lex_all.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/syntax_suggest/capture/ (stored 0%)
+  adding: lib/ruby/3.3.0/syntax_suggest/capture/before_after_keyword_ends.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/syntax_suggest/capture/falling_indent_lines.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/syntax_suggest/api.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/syntax_suggest/priority_engulf_queue.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/syntax_suggest/code_line.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/syntax_suggest/around_block_scan.rb (deflated 66%)
+  adding: lib/ruby/3.3.0/syntax_suggest/core_ext.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/syntax_suggest/unvisited_lines.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/syntax_suggest/parse_blocks_from_indent_line.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/syntax_suggest/display_invalid_blocks.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/syntax_suggest/code_frontier.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/syntax_suggest/clean_document.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/syntax_suggest/code_search.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/syntax_suggest/lex_value.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/unicode_normalize/ (stored 0%)
+  adding: lib/ruby/3.3.0/unicode_normalize/normalize.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/unicode_normalize/tables.rbecho '#endif /* RAPI_MINOR */' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+echo '#ifndef RAPI_TEENY' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+ruby -e 'puts "#define RAPI_TEENY " + "3.3.10".split(".")[2]' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+ (deflated 81%)
+  adding: lib/ruby/3.3.0/pp.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/mutex_m.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/reline.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/set.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/ripper.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/reline/ (stored 0%)
+  adding: lib/ruby/3.3.0/reline/line_editor.rb (deflated 80%)
+  adding: lib/ruby/3.3.0/reline/kill_ring.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/reline/terminfo.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/reline/io.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/reline/key_actor/ (stored 0%)
+  adding: lib/ruby/3.3.0/reline/key_actor/vi_command.rb (deflated 81%)
+  adding: lib/ruby/3.3.0/reline/key_actor/composite.rb (deflated 51%)
+  adding: lib/ruby/3.3.0/reline/key_actor/vi_insert.rb (deflated 83%)
+  adding: lib/ruby/3.3.0/reline/key_actor/emacs.rb (deflated 81%)
+  adding: lib/ruby/3.3.0/reline/key_actor/base.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/reline/key_actor.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/reline/key_stroke.rb (deflated 66%)
+  adding: lib/ruby/3.3.0/reline/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/reline/unicode.rb (deflated 86%)
+  adding: lib/ruby/3.3.0/reline/face.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/reline/unicode/ (stored 0%)
+  adding: lib/ruby/3.3.0/reline/unicode/east_asian_width.rb (deflated 83%)
+  adding: lib/ruby/3.3.0/reline/config.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/reline/history.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/reline/io/ (stored 0%)
+  adding: lib/ruby/3.3.0/reline/io/dumb.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/reline/io/windows.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/reline/io/ansi.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/psych.rb (deflated 78%)
+  adding: lib/ruby/3.3.0/rdoc.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/ripper/ (stored 0%)
+  adding: lib/ruby/3.3.0/ripper/lexer.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/ripper/core.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/ripper/sexp.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/ripper/filter.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/observer.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/rubygems.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/irb/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/color_printer.rb (deflated 53%)
+  adding: lib/ruby/3.3.0/irb/input-method.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/irb/ext/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/ext/multi-irb.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/irb/ext/eval_history.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/irb/ext/change-ws.rb (deflated 50%)
+  adding: lib/ruby/3.3.0/irb/ext/use-loader.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/irb/ext/tracer.rb (deflated 46%)
+  adding: lib/ruby/3.3.0/irb/ext/loader.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/irb/ext/workspaces.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/irb/lc/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/lc/error.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/irb/lc/ja/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/lc/ja/error.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/irb/lc/ja/help-message (deflated 61%)
+  adding: lib/ruby/3.3.0/irb/lc/help-message (deflated 65%)
+  adding: lib/ruby/3.3.0/irb/easter-egg.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/irb/help.rb (deflated 43%)
+  adding: lib/ruby/3.3.0/irb/default_commands.rb (deflated 77%)
+  adding: lib/ruby/3.3.0/irb/command.rb (deflated 40%)
+  adding: lib/ruby/3.3.0/irb/debug.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/irb/frame.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/irb/inspector.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/irb/ws-for-case-2.rb (deflated 10%)
+  adding: lib/ruby/3.3.0/irb/notifier.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/irb/workspace.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/irb/xmp.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/irb/init.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/irb/version.rb (deflated 19%)
+  adding: lib/ruby/3.3.0/irb/command/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/command/finish.rb (deflated 36%)
+  adding: lib/ruby/3.3.0/irb/command/exit.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/irb/command/continue.rb (deflated 37%)
+  adding: lib/ruby/3.3.0/irb/command/delete.rb (deflated 36%)
+  adding: lib/ruby/3.3.0/irb/command/info.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/irb/command/help.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/irb/command/debug.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/irb/command/next.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/irb/command/disable_irb.rb (deflated 37%)
+  adding: lib/ruby/3.3.0/irb/command/force_exit.rb (deflated 33%)
+  adding: lib/ruby/3.3.0/irb/command/backtrace.rb (deflated 36%)
+  adding: lib/ruby/3.3.0/irb/command/catch.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/irb/command/internal_helpers.rb (deflated 46%)
+  adding: lib/ruby/3.3.0/irb/command/load.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/irb/command/edit.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/irb/command/measure.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/irb/command/show_source.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/irb/command/context.rb (deflated 42%)
+  adding: lib/ruby/3.3.0/irb/command/whereami.rb (deflated 43%)
+  adding: lib/ruby/3.3.0/irb/command/show_doc.rb (deflated 52%)
+  adding: lib/ruby/3.3.0/irb/command/step.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/irb/command/chws.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/irb/command/break.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/irb/command/irb_info.rb (deflated 53%)
+  adding: lib/ruby/3.3.0/irb/command/subirb.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/irb/command/pushws.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/irb/command/base.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/irb/command/ls.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/irb/command/history.rb (deflated 50%)
+  adding: lib/ruby/3.3.0/irb/helper_method/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/helper_method/conf.rb (deflated 34%)
+  adding: lib/ruby/3.3.0/irb/helper_method/base.rb (deflated 51%)
+  adding: lib/ruby/3.3.0/irb/source_finder.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/irb/pager.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/irb/statement.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/irb/cmd/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/cmd/nop.rb (deflated 19%)
+  adding: lib/ruby/3.3.0/irb/context.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/irb/ruby_logo.aa (deflated 70%)
+  adding: lib/ruby/3.3.0/irb/helper_method.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/irb/locale.rb (deflated 66%)
+  adding: lib/ruby/3.3.0/irb/output-method.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/irb/debug/ (stored 0%)
+  adding: lib/ruby/3.3.0/irb/debug/ui.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/irb/completion.rb (deflated 75%)
+  adding: lib/ruby/3.3.0/irb/nesting_parser.rb (deflated 76%)
+  adding: lib/ruby/3.3.0/irb/ruby-lex.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/irb/color.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/irb/history.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/uri.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/bundled_gems.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/bigdecimal/ (stored 0%)
+  adding: lib/ruby/3.3.0/bigdecimal/ludcmp.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/bigdecimal/util.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/bigdecimal/math.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/bigdecimal/jacobian.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/bigdecimal/newton.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/coverage.rb (deflated 37%)
+  adding: lib/ruby/3.3.0/open3/ (stored 0%)
+  adding: lib/ruby/3.3.0/open3/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/random/ (stored 0%)
+  adding: lib/ruby/3.3.0/random/formatter.rb (deflated 66%)
+  adding: lib/ruby/3.3.0/getoptlong.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/bigdecimal.rb (deflated 14%)
+  adding: lib/ruby/3.3.0/monitor.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/erb.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/prettyprint.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/socket.rb (deflated 79%)
+  adding: lib/ruby/3.3.0/drb.rb (stored 0%)
+  adding: lib/ruby/3.3.0/logger.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/prism.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/json/ (stored 0%)
+  adding: lib/ruby/3.3.0/json/ext.rb (deflated 41%)
+  adding: lib/ruby/3.3.0/json/generic_object.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/json/common.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/json/version.rb (deflated 45%)
+  adding: lib/ruby/3.3.0/json/add/ (stored 0%)
+  adding: lib/ruby/3.3.0/json/add/ostruct.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/json/add/core.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/json/add/set.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/json/add/symbol.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/json/add/range.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/json/add/bigdecimal.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/json/add/complex.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/json/add/time.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/json/add/date_time.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/json/add/regexp.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/json/add/struct.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/json/add/date.rb (deflated 53%)
+  adding: lib/ruby/3.3.0/json/add/rational.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/json/add/exception.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/pstore.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/time.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/ruby_vm/ (stored 0%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/ (stored 0%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/instruction.rb (deflated 89%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/block.rb (deflated 47%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/invariants.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/c_type.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/stats.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/branch_stub.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/entry_stub.rb (deflated 39%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/insn_compiler.rb (deflated 81%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/assembler.rb (deflated 85%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/exit_compiler.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/compiler.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/code_block.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/context.rb (deflated 75%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/type.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/c_pointer.rb (deflated 78%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/hooks.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/ruby_vm/rjit/jit_state.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/un.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/csv/ (stored 0%)
+  adding: lib/ruby/3.3.0/csv/core_ext/ (stored 0%)
+  adding: lib/ruby/3.3.0/csv/core_ext/string.rb (deflated 34%)
+  adding: lib/ruby/3.3.0/csv/core_ext/array.rb (deflated 32%)
+  adding: lib/ruby/3.3.0/csv/writer.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/csv/fields_converter.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/csv/parser.rb (deflated 80%)
+  adding: lib/ruby/3.3.0/csv/row.rb (deflated 77%)
+  adding: lib/ruby/3.3.0/csv/version.rb (deflated 3%)
+  adding: lib/ruby/3.3.0/csv/table.rb (deflated 82%)
+  adding: lib/ruby/3.3.0/csv/input_record_separator.rb (deflated 39%)
+  adding: lib/ruby/3.3.0/erb/ (stored 0%)
+  adding: lib/ruby/3.3.0/erb/util.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/erb/def_method.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/erb/version.rb (deflated 4%)
+  adding: lib/ruby/3.3.0/erb/compiler.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/English.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/error_highlight/ (stored 0%)
+  adding: lib/ruby/3.3.0/error_highlight/formatter.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/error_highlight/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/error_highlight/core_ext.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/error_highlight/base.rb (deflated 77%)
+  adding: lib/ruby/3.3.0/securerandom.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/psych/ (stored 0%)
+  adding: lib/ruby/3.3.0/psych/omap.rb (deflated 4%)
+  adding: lib/ruby/3.3.0/psych/parser.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/psych/versions.rb (deflated 15%)
+  adding: lib/ruby/3.3.0/psych/syntax_error.rb (deflated 48%)
+  adding: lib/ruby/3.3.0/psych/visitors/ (stored 0%)
+  adding: lib/ruby/3.3.0/psych/visitors/yaml_tree.rb (deflated 77%)
+  adding: lib/ruby/3.3.0/psych/visitors/visitor.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/psych/visitors/json_tree.rb (deflated 47%)
+  adding: lib/ruby/3.3.0/psych/visitors/emitter.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/psych/visitors/to_ruby.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/psych/visitors/depth_first.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/psych/set.rb (deflated 4%)
+  adding: lib/ruby/3.3.0/psych/coder.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/psych/visitors.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/psych/y.rb (deflated 26%)
+  adding: lib/ruby/3.3.0/psych/handlers/ (stored 0%)
+  adding: lib/ruby/3.3.0/psych/handlers/document_stream.rb (deflated 50%)
+  adding: lib/ruby/3.3.0/psych/handlers/recorder.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/psych/json/ (stored 0%)
+  adding: lib/ruby/3.3.0/psych/json/yaml_events.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/psych/json/ruby_events.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/psych/json/tree_builder.rb (deflated 42%)
+  adding: lib/ruby/3.3.0/psych/json/stream.rb (deflated 49%)
+  adding: lib/ruby/3.3.0/psych/nodes/ (stored 0%)
+  adding: lib/ruby/3.3.0/psych/nodes/mapping.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/psych/nodes/scalar.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/psych/nodes/node.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/psych/nodes/sequence.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/psych/nodes/document.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/psych/nodes/alias.rb (deflated 46%)
+  adding: lib/ruby/3.3.0/psych/nodes/stream.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/psych/tree_builder.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/psych/stream.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/psych/core_ext.rb (deflated 36%)
+  adding: lib/ruby/3.3.0/psych/handler.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/psych/class_loader.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/psych/streaming.rb (deflated 49%)
+  adding: lib/ruby/3.3.0/psych/scalar_scanner.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/psych/nodes.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/psych/exception.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/optparse/ (stored 0%)
+  adding: lib/ruby/3.3.0/optparse/shellwords.rb (deflated 24%)
+  adding: lib/ruby/3.3.0/optparse/kwargs.rb (deflated 45%)
+  adding: lib/ruby/3.3.0/optparse/ac.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/optparse/uri.rb (deflated 15%)
+  adding: lib/ruby/3.3.0/optparse/version.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/optparse/time.rb (deflated 30%)
+  adding: lib/ruby/3.3.0/optparse/date.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/open-uri.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/set/ (stored 0%)
+  adding: lib/ruby/3.3.0/set/sorted_set.rb (deflated 27%)
+  adding: lib/ruby/3.3.0/pathname.rb (deflated 73%)
+  adding: lib/ruby/3.3.0/uri/ (stored 0%)
+  adding: lib/ruby/3.3.0/uri/ws.rb (deflated 52%)
+  adding: lib/ruby/3.3.0/uri/http.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/uri/ldap.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/uri/ftp.rb (deflated 65%)
+  adding: lib/ruby/3.3.0/uri/common.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/uri/file.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/uri/https.rb (deflated 38%)
+  adding: lib/ruby/3.3.0/uri/version.rb (deflated 21%)
+  adding: lib/ruby/3.3.0/uri/mailto.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/uri/rfc2396_parser.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/uri/generic.rb (deflated 77%)
+  adding: lib/ruby/3.3.0/uri/rfc3986_parser.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/uri/wss.rb (deflated 36%)
+  adding: lib/ruby/3.3.0/uri/ldaps.rb (deflated 38%)
+  adding: lib/ruby/3.3.0/yaml/ (stored 0%)
+  adding: lib/ruby/3.3.0/yaml/dbm.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/yaml/store.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/readline.rb (deflated 28%)
+  adding: lib/ruby/3.3.0/delegate.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/digest.rb (deflated 56%)
+  adding: lib/ruby/3.3.0/net/ (stored 0%)
+  adding: lib/ruby/3.3.0/net/http.rb (deflated 79%)
+  adding: lib/ruby/3.3.0/net/protocol.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/net/http/ (stored 0%)
+  adding: lib/ruby/3.3.0/net/http/generic_request.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/net/http/status.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/net/http/request.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/net/http/proxy_delta.rb (deflated 35%)
+  adding: lib/ruby/3.3.0/net/http/response.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/net/http/requests.rb (deflated 90%)
+  adding: lib/ruby/3.3.0/net/http/exceptions.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/net/http/header.rb (deflated 75%)
+  adding: lib/ruby/3.3.0/net/http/responses.rb (deflated 86%)
+  adding: lib/ruby/3.3.0/net/http/backward.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/net/https.rb (deflated 34%)
+  adding: lib/ruby/3.3.0/optparse.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/resolv.rb (deflated 79%)
+  adding: lib/ruby/3.3.0/resolv-replace.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/bundler.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/forwardable/ (stored 0%)
+  adding: lib/ruby/3.3.0/forwardable/impl.rb (deflated 33%)
+  adding: lib/ruby/3.3.0/ipaddr.rb (deflated 74%)
+  adding: lib/ruby/3.3.0/wasm32-wasip2/ (stored 0%)
+  adding: lib/ruby/3.3.0/wasm32-wasip2/rbconfig.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/weakref.rb (deflated 55%)
+  adding: lib/ruby/3.3.0/timeout.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/kconv.rb (deflated 78%)
+  adding: lib/ruby/3.3.0/optionparser.rb (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/ (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/core_ext/ (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/core_ext/name_error.rb (deflated 61%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/ (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/key_error_checker.rb (deflated 47%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/name_error_checkers.rb (deflated 54%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/pattern_key_name_checker.rb (deflated 50%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/require_path_checker.rb (deflated 57%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/name_error_checkers/ (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/name_error_checkers/variable_name_checker.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/name_error_checkers/class_name_checker.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/method_name_checker.rb (deflated 63%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checkers/null_checker.rb (deflated 16%)
+  adding: lib/ruby/3.3.0/did_you_mean/levenshtein.rb (deflated 50%)
+  adding: lib/ruby/3.3.0/did_you_mean/tree_spell_checker.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/did_you_mean/formatter.rb (deflated 59%)
+  adding: lib/ruby/3.3.0/did_you_mean/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/spell_checker.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/did_you_mean/formatters/ (stored 0%)
+  adding: lib/ruby/3.3.0/did_you_mean/formatters/verbose_formatter.rb (deflated 31%)
+  adding: lib/ruby/3.3.0/did_you_mean/formatters/plain_formatter.rb (deflated 37%)
+  adding: lib/ruby/3.3.0/did_you_mean/jaro_winkler.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/did_you_mean/verbose.rb (deflated 21%)
+  adding: lib/ruby/3.3.0/did_you_mean/experimental.rb (deflated 26%)
+  adding: lib/ruby/3.3.0/abbrev.rb (deflated 64%)
+  adding: lib/ruby/3.3.0/cgi/ (stored 0%)
+  adding: lib/ruby/3.3.0/cgi/util.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/cgi/core.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/cgi/cookie.rb (deflated 67%)
+  adding: lib/ruby/3.3.0/cgi/session/ (stored 0%)
+  adding: lib/ruby/3.3.0/cgi/session/pstore.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/cgi/session.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/cgi/html.rb (deflated 81%)
+  adding: lib/ruby/3.3.0/open3.rb (deflated 87%)
+  adding: lib/ruby/3.3.0/find.rb (deflated 58%)
+  adding: lib/ruby/3.3.0/date.rb (deflated 60%)
+  adding: lib/ruby/3.3.0/forwardable.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/prism/ (stored 0%)
+  adding: lib/ruby/3.3.0/prism/pack.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/prism/parse_result/ (stored 0%)
+  adding: lib/ruby/3.3.0/prism/parse_result/newlines.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/prism/parse_result/comments.rb (deflated 71%)
+echo '#endif /* RAPI_TEENY */' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-version.h
+  adding: lib/ruby/3.3.0/prism/pattern.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/prism/lex_compat.rb/home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/bin/wasm2c /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/Dist/bin/ruby -n ruby --num-outputs=32 -o /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby.c
+ (deflated 75%)
+  adding: lib/ruby/3.3.0/prism/debug.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/prism/node.rb (deflated 94%)
+  adding: lib/ruby/3.3.0/prism/ripper_compat.rb (deflated 69%)
+  adding: lib/ruby/3.3.0/prism/mutation_compiler.rb (deflated 88%)
+  adding: lib/ruby/3.3.0/prism/visitor.rb (deflated 85%)
+  adding: lib/ruby/3.3.0/prism/dsl.rb (deflated 89%)
+  adding: lib/ruby/3.3.0/prism/dispatcher.rb (deflated 92%)
+  adding: lib/ruby/3.3.0/prism/parse_result.rb (deflated 78%)
+  adding: lib/ruby/3.3.0/prism/compiler.rb (deflated 86%)
+  adding: lib/ruby/3.3.0/prism/ffi.rb (deflated 75%)
+  adding: lib/ruby/3.3.0/prism/node_inspector.rb (deflated 62%)
+  adding: lib/ruby/3.3.0/prism/node_ext.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/prism/serialize.rb (deflated 90%)
+  adding: lib/ruby/3.3.0/prism/desugar_compiler.rb (deflated 85%)
+  adding: lib/ruby/3.3.0/did_you_mean.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/yaml.rb (deflated 49%)
+  adding: lib/ruby/3.3.0/benchmark.rb (deflated 72%)
+  adding: lib/ruby/3.3.0/logger/ (stored 0%)
+  adding: lib/ruby/3.3.0/logger/log_device.rb (deflated 71%)
+  adding: lib/ruby/3.3.0/logger/errors.rb (deflated 30%)
+  adding: lib/ruby/3.3.0/logger/formatter.rb (deflated 52%)
+  adding: lib/ruby/3.3.0/logger/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/logger/severity.rb (deflated 47%)
+  adding: lib/ruby/3.3.0/logger/period.rb (deflated 70%)
+  adding: lib/ruby/3.3.0/objspace/ (stored 0%)
+  adding: lib/ruby/3.3.0/objspace/trace.rb (deflated 50%)
+  adding: lib/ruby/3.3.0/digest/ (stored 0%)
+  adding: lib/ruby/3.3.0/digest/sha2.rb (deflated 68%)
+  adding: lib/ruby/3.3.0/digest/version.rb (stored 0%)
+  adding: lib/ruby/3.3.0/digest/sha2/ (stored 0%)
+  adding: lib/ruby/3.3.0/digest/sha2/loader.rb (stored 0%)
+  adding: lib/ruby/3.3.0/digest/loader.rb (stored 0%)
+  adding: lib/ruby/vendor_ruby/ (stored 0%)
+  adding: lib/ruby/vendor_ruby/3.3.0/ (stored 0%)
+  adding: lib/ruby/vendor_ruby/3.3.0/wasm32-wasip2/ (stored 0%)
+  adding: lib/ruby/site_ruby/ (stored 0%)
+  adding: lib/ruby/site_ruby/3.3.0/ (stored 0%)
+  adding: lib/ruby/site_ruby/3.3.0/wasm32-wasip2/ (stored 0%)
+  adding: lib/ruby/BSDL (deflated 47%)
+  adding: lib/ruby/COPYING.ja (deflated 59%)
+rm -r /home/runner/work/mkxp-z/mkxp-z/libretro/build/lib/_Dist
+# Find all the function types declared using `FUNC_TYPE_DECL_EXTERN_T` and redeclare them as macros to fix the "initializer element is not constant" compilation error that occurs when using GCC versions earlier than 8.1.0
+rm -f /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-func-types.h
+for func_type in $(grep -r 'FUNC_TYPE_DECL_EXTERN_T *([^()]*)' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-impl.h | grep -v '# *define' | sed -e 's/FUNC_TYPE_DECL_EXTERN_T *( *\(.*\) *).*/\1/'); do \
+	echo "#define $func_type \"$(od -N 32 -x /dev/urandom | cut -b 9- | tr -d ' \n' | sed -e 's/.\{2\}/\\x&/g')\"" >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-func-types.h; \
+done
+sed -i 's/ *# *define * FUNC_TYPE_DECL_EXTERN_T *([^()]).*/#define FUNC_TYPE_DECL_EXTERN_T(x)/g' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-impl.h
+sed -i 's/ *# *define * FUNC_TYPE_EXTERN_T *([^()]).*/#define FUNC_TYPE_EXTERN_T(x) const char _mkxp_unused_##x[]/g' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-impl.h
+sed -i 's/ *# *define * FUNC_TYPE_T *([^()]).*/#define FUNC_TYPE_T(x) static const char _mkxp_unused_##x[]/g' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-impl.h
+sed -i 's/__has_builtin *([^()]*)/0/g' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-impl.h
+sed -i 's/#error "Missing implementation of __builtin_add_overflow or _addcarry_u64"/return __builtin_add_overflow(a, b, resptr);/g' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-impl.h
+echo '#ifndef SANDBOX_INSTANTIATE_ARGS' > /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-instantiate-args.h
+echo "#define SANDBOX_INSTANTIATE_ARGS(x) $(grep '^void wasm2c_ruby_instantiate(' /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby.h | head -n 1 | sed -e 's/^[^,]*, *//' -e 's/)[^)]*$/,/' -e 's/\([^,]*\), */,static_cast<\1>(x)/g' -e 's/^,//')" >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-instantiate-args.h
+echo '#endif /* SANDBOX_INSTANTIATE_ARGS */' >> /home/runner/work/mkxp-z/mkxp-z/libretro/build/libretro-stage1/ruby/mkxp-sandbox-ruby-instantiate-args.h
